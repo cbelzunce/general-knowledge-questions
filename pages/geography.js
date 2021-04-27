@@ -3,6 +3,17 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import parse from 'html-react-parser';
 import Footer from '../component/Footer'
 import Navbar from '../component/Navbar'
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import Collapse from '@material-ui/core/Collapse';
+import StarBorder from '@material-ui/icons/StarBorder';
+import { makeStyles } from '@material-ui/core/styles';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+
+
 
 const questions = [
   {id: 1, title: "Question 1", content: parse("Quel est le truc ?")},
@@ -14,6 +25,24 @@ const questions = [
 ];
 
 export default function Geography() {
+  const [open, setOpen] = React.useState(false);
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      width: '100%',
+      maxWidth: 360,
+      backgroundColor: theme.palette.background.paper,
+    },
+    nested: {
+      paddingLeft: theme.spacing(4),
+    },
+  }));
+
+  const classes = useStyles();
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
 
   return (
     <React.Fragment>
@@ -21,16 +50,22 @@ export default function Geography() {
       <Navbar/>
       <main>
         {questions.map((question) => (
-          <div>
-            <ul>
-              <h2>{question.title}</h2>
-              <p>{question.content}</p>
-              <li>Réponse 1</li>
-              <li>Réponse 2</li>
-              <li>Réponse 3</li>
-              <li>Réponse 4</li>
-            </ul>
-          </div>
+          <List>
+            <ListItem button onClick={handleClick}>
+              <ListItemText primary={question.content} />
+              { open ? <ExpandMore /> : <ExpandLess /> }
+            </ListItem>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText primary="Starred" />
+                </ListItem>
+              </List>
+            </Collapse>
+          </List>
         ))}
       </main>
       <Footer/>

@@ -3,18 +3,15 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import parse from 'html-react-parser';
 import Footer from '../component/Footer'
 import Navbar from '../component/Navbar'
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import Collapse from '@material-ui/core/Collapse';
-import StarBorder from '@material-ui/icons/StarBorder';
 import { makeStyles } from '@material-ui/core/styles';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Grid from '@material-ui/core/Grid'
 
-
-
+// todo : markdown file
 const questions = [
   {id: 1, title: "Question 1", content: parse("Quel est le truc ?")},
   {id: 2, title: "Question 2", content: parse("Quel est le bidule ?")},
@@ -25,24 +22,8 @@ const questions = [
 ];
 
 export default function Geography() {
-  const [open, setOpen] = React.useState(false);
 
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      width: '100%',
-      maxWidth: 360,
-      backgroundColor: theme.palette.background.paper,
-    },
-    nested: {
-      paddingLeft: theme.spacing(4),
-    },
-  }));
-
-  const classes = useStyles();
-
-  const handleClick = () => {
-    setOpen(!open);
-  };
+  //todo define styles
 
   return (
     <React.Fragment>
@@ -50,22 +31,20 @@ export default function Geography() {
       <Navbar/>
       <main>
         {questions.map((question) => (
-          <List>
-            <ListItem button onClick={handleClick}>
-              <ListItemText primary={question.content} />
-              { open ? <ExpandMore /> : <ExpandLess /> }
-            </ListItem>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <StarBorder />
-                  </ListItemIcon>
-                  <ListItemText primary="Starred" />
-                </ListItem>
-              </List>
-            </Collapse>
-          </List>
+          <div key={question.id}>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography>{question.content}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                Réponse : pouet
+              </AccordionDetails>
+            </Accordion>
+          </div>
         ))}
       </main>
       <Footer/>

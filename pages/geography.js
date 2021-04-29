@@ -21,18 +21,21 @@ const useStyles = makeStyles((theme) => ({
 
 // todo : markdown file
 const questions = [
-  {id: 1, title: "Question 1", content: parse("Quel est le truc ?")},
-  {id: 2, title: "Question 2", content: parse("Quel est le bidule ?")},
-  {id: 3, title: "Question 3", content: parse("Quel est le machin ?")},
-  {id: 4, title: "Question 4", content: parse("Quel est le pouet ?")},
-  {id: 5, title: "Question 5", content: parse("Quel est le couac ?")},
-  {id: 6, title: "Question 6", content: parse("Quel est le couic ?")},
+  {id: 1, title: "Question 1", content: parse("Quel est le truc ?"), answer:parse("La réponse 1")},
+  {id: 2, title: "Question 2", content: parse("Quel est le bidule ?"), answer:parse("La réponse 2")},
+  {id: 3, title: "Question 3", content: parse("Quel est le machin ?"), answer:parse("La réponse 3")},
+  {id: 4, title: "Question 4", content: parse("Quel est le pouet ?"), answer:parse("La réponse 4")},
+  {id: 5, title: "Question 5", content: parse("Quel est le couac ?"), answer:parse("La réponse 5")},
+  {id: 6, title: "Question 6", content: parse("Quel est le couic ?"), answer:parse("La réponse 6")},
 ];
 
 export default function Geography() {
   const classes = useStyles();
 
   //todo define styles
+  // todo : menu en haut, ancres qui mènent à différentes sections de la page (big page) pour caser des mots clé
+  // traduire et mixer d'après bouquin culture gé et sites
+  // trouver images libres de droit
 
   return (
     <React.Fragment>
@@ -40,20 +43,34 @@ export default function Geography() {
       <Navbar/>
       <main>
         <Container className={classes.cardGrid} maxWidth="md">
-          <Grid container spacing={4}>
+          <Grid container spacing={6}>
+            <Grid xs={12} sm={12} md={10}>
+              <Typography gutterBottom variant="h1" component="h2">
+                Geography quiz
+              </Typography>
+              <Typography subtitle1 paragraph>
+                Hundreds of <strong>geography quiz questions</strong> to help you improve your general knowledge skills. A
+                large variety of themes are explored : countries, cities, capital cities, people, oceans, economy...
+
+                Let's check out if you really know the world where you're living with this <strong>world geography quiz</strong> !
+              </Typography>
+            </Grid>
+
             {questions.map((question) => (
               <Grid item key={question.id} xs={12} sm={12} md={10}>
                   <div>
+                    <Typography gutterBottom variant="h5" component="h3">{question.content}
+                    </Typography>
                     <Accordion>
                       <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                       >
-                        <Typography>{question.content}</Typography>
+                        <Typography>See the answer</Typography>
                       </AccordionSummary>
                       <AccordionDetails>
-                        Réponse : pouet
+                        {question.answer}
                       </AccordionDetails>
                     </Accordion>
                   </div>

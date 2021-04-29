@@ -10,6 +10,14 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid'
+import Container from '@material-ui/core/Container'
+
+const useStyles = makeStyles((theme) => ({
+  cardGrid: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+  },
+}));
 
 // todo : markdown file
 const questions = [
@@ -22,6 +30,7 @@ const questions = [
 ];
 
 export default function Geography() {
+  const classes = useStyles();
 
   //todo define styles
 
@@ -30,22 +39,31 @@ export default function Geography() {
       <CssBaseline />
       <Navbar/>
       <main>
-        {questions.map((question) => (
-          <div key={question.id}>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography>{question.content}</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                Réponse : pouet
-              </AccordionDetails>
-            </Accordion>
-          </div>
-        ))}
+        <Container className={classes.cardGrid} maxWidth="md">
+          <Grid container spacing={4}>
+            {questions.map((question) => (
+              <Grid item key={question.id} xs={12} sm={12} md={10}>
+                  <div>
+                    <Accordion>
+                      <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                      >
+                        <Typography>{question.content}</Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        Réponse : pouet
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+              </Grid>
+            ))}
+
+          </Grid>
+        </Container>
+
+
       </main>
       <Footer/>
     </React.Fragment>

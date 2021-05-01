@@ -21,3 +21,6 @@ HomePage : General knowledge questions
     - world map quiz
     - uk geography quiz
     - map quiz
+    
+## API en Anglais
+https://opentdb.com/api_config.php

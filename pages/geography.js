@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
+import { light } from '@material-ui/core/styles/createPalette'
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -19,22 +20,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// todo : markdown file
-const questions = [
-  {id: 1, title: "Question 1", content: parse("Quel est le truc ?"), answer:parse("La réponse 1")},
-  {id: 2, title: "Question 2", content: parse("Quel est le bidule ?"), answer:parse("La réponse 2")},
-  {id: 3, title: "Question 3", content: parse("Quel est le machin ?"), answer:parse("La réponse 3")},
-  {id: 4, title: "Question 4", content: parse("Quel est le pouet ?"), answer:parse("La réponse 4")},
-  {id: 5, title: "Question 5", content: parse("Quel est le couac ?"), answer:parse("La réponse 5")},
-  {id: 6, title: "Question 6", content: parse("Quel est le couic ?"), answer:parse("La réponse 6")},
-];
-
-export default function Geography() {
+function Geography({ questionsFromApi }) {
   const classes = useStyles();
 
   //todo define styles
-  // todo : menu en haut, ancres qui mènent à différentes sections de la page (big page) pour caser des mots clé
-  // traduire et mixer d'après bouquin culture gé et sites
   // trouver images libres de droit
 
   return (
@@ -56,11 +45,18 @@ export default function Geography() {
               </Typography>
             </Grid>
 
-            {questions.map((question) => (
-              <Grid item key={question.id} xs={12} sm={12} md={10}>
+            {questionsFromApi.results.map((result, index) => (
+
+              <Grid item key={index} xs={12} sm={12} md={10}>
                   <div>
-                    <Typography gutterBottom variant="h5" component="h3">{question.content}
+                    <Typography gutterBottom variant="h5" component="h3">{result.question}
                     </Typography>
+                    <ul>
+                      {result.incorrect_answers.map((answer) => {
+                        return <li>{answer}</li>
+                      })}
+                    </ul>
+
                     <Accordion>
                       <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
@@ -70,7 +66,7 @@ export default function Geography() {
                         <Typography>See the answer</Typography>
                       </AccordionSummary>
                       <AccordionDetails>
-                        {question.answer}
+                        {result.correct_answer}
                       </AccordionDetails>
                     </Accordion>
                   </div>
@@ -86,3 +82,29 @@ export default function Geography() {
     </React.Fragment>
   );
 }
+
+// This function gets called at build time on server-side.
+// It won't be called on client-side, so you can even do
+// direct database queries. See the "Technical details" section.
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  // You can use any data fetching library
+  const res = await fetch('https://opentdb.com/api.php?amount=10&category=22')
+  const questionsFromApi = await res.json();
+
+  questionsFromApi.results.map((question) => {
+
+    question.incorrect_answers.push(question.correct_answer)
+    question.incorrect_answers.sort(() => Math.random() - 0.5)
+  })
+
+  // By returning { props: { posts } }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      questionsFromApi,
+    },
+  }
+}
+
+export default Geography

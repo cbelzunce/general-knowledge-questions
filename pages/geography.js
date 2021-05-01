@@ -45,10 +45,13 @@ function Geography({ questionsFromApi }) {
               </Typography>
             </Grid>
 
-            {questionsFromApi.results.map((result, index) => (
+            {questionsFromApi.results.slice(0, 10).map((result, index) => (
 
               <Grid item key={index} xs={12} sm={12} md={10}>
                   <div>
+                    <Typography gutterBottom variant="h6" component="h3">
+                      <strong>Quiz question</strong> n° {index + 1}
+                    </Typography>
                     <Typography gutterBottom variant="h5" component="h3">{result.question}
                     </Typography>
                     <ul>
@@ -73,9 +76,49 @@ function Geography({ questionsFromApi }) {
               </Grid>
             ))}
 
+            <Grid xs={12} sm={12} md={10}>
+              <Typography gutterBottom gutterTop variant="h4" component="h3">
+                Geography quizzes
+              </Typography>
+              <Typography subtitle2 paragraph>
+                Another serie of <strong>quiz questions</strong> to help you prepare an exam, or just to play with friends.
+                New questions every time in this <strong>world geography quiz</strong> !
+              </Typography>
+            </Grid>
+
+            {questionsFromApi.results.slice(11, 21).map((result, index) => (
+
+              <Grid item key={index} xs={12} sm={12} md={10}>
+                <div>
+                  <Typography gutterBottom variant="h6" component="h3">
+                    <strong>Quiz question</strong> n° {index + 1}
+                  </Typography>
+                  <Typography gutterBottom variant="h5" component="h3">{result.question}
+                  </Typography>
+                  <ul>
+                    {result.incorrect_answers.map((answer) => {
+                      return <li>{answer}</li>
+                    })}
+                  </ul>
+
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                    >
+                      <Typography>See the answer</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      {result.correct_answer}
+                    </AccordionDetails>
+                  </Accordion>
+                </div>
+              </Grid>
+            ))}
+
           </Grid>
         </Container>
-
 
       </main>
       <Footer/>
@@ -89,7 +132,7 @@ function Geography({ questionsFromApi }) {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const res = await fetch('https://opentdb.com/api.php?amount=10&category=22')
+  const res = await fetch('https://opentdb.com/api.php?amount=100&category=22')
   const questionsFromApi = await res.json();
 
   questionsFromApi.results.map((question) => {

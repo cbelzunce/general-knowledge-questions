@@ -1,6 +1,5 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import parse from 'html-react-parser';
 import Footer from '../component/Footer'
 import Navbar from '../component/Navbar'
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,7 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
-import { light } from '@material-ui/core/styles/createPalette'
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -23,8 +21,15 @@ const useStyles = makeStyles((theme) => ({
 function Geography({ questionsFromApi }) {
   const classes = useStyles();
 
-  //todo define styles
+  questionsFromApi.results.map((question) => {
+    question.incorrect_answers.push(question.correct_answer)
+    question.incorrect_answers.sort(() => Math.random() - 0.5)
+  })
+  //todo Erreur la bonne réponse est affichée 2 fois
+
+  //todo define styles et design
   // trouver images libres de droit
+  // Faire 10 séries de 10 questions avec petit paragraphe SEO
 
   return (
     <React.Fragment>
@@ -126,23 +131,10 @@ function Geography({ questionsFromApi }) {
   );
 }
 
-// This function gets called at build time on server-side.
-// It won't be called on client-side, so you can even do
-// direct database queries. See the "Technical details" section.
 export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
   const res = await fetch('https://opentdb.com/api.php?amount=100&category=22')
   const questionsFromApi = await res.json();
 
-  questionsFromApi.results.map((question) => {
-
-    question.incorrect_answers.push(question.correct_answer)
-    question.incorrect_answers.sort(() => Math.random() - 0.5)
-  })
-
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
   return {
     props: {
       questionsFromApi,

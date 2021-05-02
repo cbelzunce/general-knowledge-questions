@@ -22,10 +22,19 @@ function Geography({ questionsFromApi }) {
   const classes = useStyles();
 
   questionsFromApi.results.map((question) => {
-    question.incorrect_answers.push(question.correct_answer)
-    question.incorrect_answers.sort(() => Math.random() - 0.5)
+
+    // Mix all answers
+    question.answers = []
+    question.answers.push(question.correct_answer)
+    question.answers = question.answers.concat(question.incorrect_answers)
+
+    question.answers = question.answers
+      .map((a) => [Math.random(),a])
+      .sort((a,b) => a[0]-b[0])
+      .map((a) => a[1])
   })
-  //todo Erreur la bonne réponse est affichée 2 fois
+
+
 
   //todo define styles et design
   // trouver images libres de droit
@@ -60,11 +69,10 @@ function Geography({ questionsFromApi }) {
                     <Typography gutterBottom variant="h5" component="h3">{result.question}
                     </Typography>
                     <ul>
-                      {result.incorrect_answers.map((answer) => {
+                      {result.answers.map((answer) => {
                         return <li>{answer}</li>
                       })}
                     </ul>
-
                     <Accordion>
                       <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}

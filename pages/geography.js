@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
+import RadioQuiz from '../component/RadioQuiz'
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -34,11 +35,10 @@ function Geography({ questionsFromApi }) {
       .map((a) => a[1])
   })
 
-
-
   //todo define styles et design
   // trouver images libres de droit
   // Faire 10 séries de 10 questions avec petit paragraphe SEO
+  // Export PDF
 
   return (
     <React.Fragment>
@@ -60,34 +60,37 @@ function Geography({ questionsFromApi }) {
             </Grid>
 
             {questionsFromApi.results.slice(0, 10).map((result, index) => (
-
               <Grid item key={index} xs={12} sm={12} md={10}>
-                  <div>
-                    <Typography gutterBottom variant="h6" component="h3">
-                      <strong>Quiz question</strong> n° {index + 1}
-                    </Typography>
-                    <Typography gutterBottom variant="h5" component="h3">{result.question}
-                    </Typography>
-                    <ul>
-                      {result.answers.map((answer) => {
-                        return <li>{answer}</li>
-                      })}
-                    </ul>
-                    <Accordion>
-                      <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                      >
-                        <Typography>See the answer</Typography>
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        {result.correct_answer}
-                      </AccordionDetails>
-                    </Accordion>
-                  </div>
+                <div>
+                  <Typography gutterBottom variant="h6" component="h3">
+                    <strong>Quiz question</strong> n° {index + 1}
+                  </Typography>
+                  <Typography gutterBottom variant="h5" component="h3">{result.question}
+                  </Typography>
+                  <ul>
+                    {result.answers.map((answer) => {
+                      return <li>{answer}</li>
+                    })}
+                  </ul>
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                    >
+                      <Typography>See the answer</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      {result.correct_answer}
+                    </AccordionDetails>
+                  </Accordion>
+                </div>
+
+                <RadioQuiz/>
+
               </Grid>
             ))}
+
 
             <Grid xs={12} sm={12} md={10}>
               <Typography gutterBottom gutterTop variant="h4" component="h3">

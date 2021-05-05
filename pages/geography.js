@@ -51,43 +51,17 @@ function Geography({ questionsFromApi }) {
               <Typography gutterBottom variant="h1" component="h2">
                 Geography quiz
               </Typography>
+
               <Typography subtitle1 paragraph>
                 Hundreds of <strong>geography quiz questions</strong> to help you improve your general knowledge skills. A
                 large variety of themes are explored : countries, cities, capital cities, people, oceans, economy...
-
                 Let's check out if you really know the world where you're living with this <strong>world geography quiz</strong> !
               </Typography>
             </Grid>
 
             {questionsFromApi.results.slice(0, 10).map((result, index) => (
               <Grid item key={index} xs={12} sm={12} md={10}>
-                <div>
-                  <Typography gutterBottom variant="h6" component="h3">
-                    <strong>Quiz question</strong> n° {index + 1}
-                  </Typography>
-                  <Typography gutterBottom variant="h5" component="h3">{result.question}
-                  </Typography>
-                  <ul>
-                    {result.answers.map((answer) => {
-                      return <li>{answer}</li>
-                    })}
-                  </ul>
-                  <Accordion>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                    >
-                      <Typography>See the answer</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      {result.correct_answer}
-                    </AccordionDetails>
-                  </Accordion>
-                </div>
-
-                <RadioQuiz/>
-
+                <RadioQuiz result={result}/>
               </Grid>
             ))}
 
@@ -103,33 +77,8 @@ function Geography({ questionsFromApi }) {
             </Grid>
 
             {questionsFromApi.results.slice(11, 21).map((result, index) => (
-
               <Grid item key={index} xs={12} sm={12} md={10}>
-                <div>
-                  <Typography gutterBottom variant="h6" component="h3">
-                    <strong>Quiz question</strong> n° {index + 1}
-                  </Typography>
-                  <Typography gutterBottom variant="h5" component="h3">{result.question}
-                  </Typography>
-                  <ul>
-                    {result.incorrect_answers.map((answer) => {
-                      return <li>{answer}</li>
-                    })}
-                  </ul>
-
-                  <Accordion>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                    >
-                      <Typography>See the answer</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      {result.correct_answer}
-                    </AccordionDetails>
-                  </Accordion>
-                </div>
+                <RadioQuiz result={result}/>
               </Grid>
             ))}
 

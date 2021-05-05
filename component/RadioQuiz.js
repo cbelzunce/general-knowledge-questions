@@ -7,7 +7,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 
-export default function RadioQuiz() {
+export default function RadioQuiz(props) {
   const [value, setValue] = React.useState('');
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState('Choose wisely');
@@ -21,14 +21,14 @@ export default function RadioQuiz() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (value === 'best') {
+    if (value === props.result.correct_answer) {
       setHelperText('You got it!');
       setError(false);
-    } else if (value === 'worst') {
-      setHelperText('Sorry, wrong answer!');
+    } else if (value === '') {
+      setHelperText('Please select an option.');
       setError(true);
     } else {
-      setHelperText('Please select an option.');
+      setHelperText('Sorry, wrong answer!');
       setError(true);
     }
   };
@@ -41,16 +41,16 @@ export default function RadioQuiz() {
         error={error}
         variant="standard"
       >
-        <FormLabel component="legend">Pop quiz: Material-UI is...</FormLabel>
+        <FormLabel><h3>{props.result.question}</h3></FormLabel>
         <RadioGroup
           aria-label="quiz"
           name="quiz"
           value={value}
           onChange={handleRadioChange}
         >
-          <FormControlLabel value="best2" control={<Radio/>} label="The best2!"/>
-          <FormControlLabel value="best" control={<Radio/>} label="The best!"/>
-          <FormControlLabel value="worst" control={<Radio/>} label="The worst."/>
+          {props.result.answers.map((answer) => {
+            return <FormControlLabel value={answer} control={<Radio/>} label={answer}/>
+          })}
         </RadioGroup>
         <FormHelperText>{helperText}</FormHelperText>
         <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">

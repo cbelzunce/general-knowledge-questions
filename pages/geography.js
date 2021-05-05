@@ -11,6 +11,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
 import RadioQuiz from '../component/RadioQuiz'
+import he from 'he'
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -24,12 +25,16 @@ function Geography({ questionsFromApi }) {
 
   questionsFromApi.results.map((question) => {
 
+    // convert html entities
+    question.question = he.decode(question.question)
+
     // Mix all answers
     question.answers = []
     question.answers.push(question.correct_answer)
     question.answers = question.answers.concat(question.incorrect_answers)
 
     question.answers = question.answers
+      .map((a) =>  he.decode(a))
       .map((a) => [Math.random(),a])
       .sort((a,b) => a[0]-b[0])
       .map((a) => a[1])
@@ -65,7 +70,6 @@ function Geography({ questionsFromApi }) {
               </Grid>
             ))}
 
-
             <Grid xs={12} sm={12} md={10}>
               <Typography gutterBottom gutterTop variant="h4" component="h3">
                 Geography quizzes
@@ -77,7 +81,7 @@ function Geography({ questionsFromApi }) {
             </Grid>
 
             {questionsFromApi.results.slice(11, 21).map((result, index) => (
-              <Grid item key={index} xs={12} sm={12} md={10}>
+              <Grid item gutterBottom gutterTop key={index} xs={12} sm={12} md={10}>
                 <RadioQuiz result={result}/>
               </Grid>
             ))}

@@ -6,11 +6,22 @@ import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid'
+import { makeStyles } from '@material-ui/core'
+
+const useStyles = makeStyles((theme) => ({
+  cardGrid: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+  },
+}));
 
 export default function RadioQuiz(props) {
   const [value, setValue] = React.useState('');
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState('Choose wisely');
+
+  const classes = useStyles();
 
   const handleRadioChange = (event) => {
     setValue(event.target.value);
@@ -48,9 +59,9 @@ export default function RadioQuiz(props) {
           value={value}
           onChange={handleRadioChange}
         >
-          {props.result.answers.map((answer) => {
-            return <FormControlLabel value={answer} control={<Radio/>} label={answer}/>
-          })}
+        {props.result.answers.map((answer) => {
+          return <FormControlLabel value={answer} control={<Radio/>} label={answer}/>
+        })}
         </RadioGroup>
         <FormHelperText>{helperText}</FormHelperText>
         <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">

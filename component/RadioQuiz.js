@@ -6,7 +6,6 @@ import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
@@ -35,6 +34,8 @@ export default function RadioQuiz(props) {
     if (value === props.result.correct_answer) {
       setHelperText('You got it!');
       setError(false);
+      props.updateScore()
+
     } else if (value === '') {
       setHelperText('Please select an option.');
       setError(true);

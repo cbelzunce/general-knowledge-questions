@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Footer from '../component/Footer'
 import Navbar from '../component/Navbar'
@@ -12,6 +12,7 @@ import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
 import RadioQuiz from '../component/RadioQuiz'
 import he from 'he'
+import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -22,6 +23,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Geography({ questionsFromApi }) {
   const classes = useStyles();
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [score, setScore] = useState(0);
 
   questionsFromApi.results.map((question) => {
 
@@ -44,6 +47,19 @@ function Geography({ questionsFromApi }) {
   // trouver images libres de droit
   // Faire 10 séries de 10 questions avec petit paragraphe SEO
   // Export PDF
+  // todo mélanger questions (éviter duplicate)
+
+  // todo récupérer les questions (autre source : https://trivia.willfry.co.uk/example)
+  // Formatter les questions des différentes sources pour format commun
+  // On a x objets json avec questions et réponses.
+  // current question (state?) : c'est le contenu qui va bouger.
+  // score (state?) : va augmenter à chaque bonne réponse.
+  // un composant Quizz (un seul, affiché) qu'on hydrate avec current question (mis à jour)
+  // un bouton pour passer à la question suivante
+  // si mauvaise réponse, surligner la bonne et bloquer la possibilité de cocher une autre (on les met en disable)
+  // un bouton "valider"
+  // un score à la fin de la série
+
 
   return (
     <React.Fragment>
@@ -63,12 +79,27 @@ function Geography({ questionsFromApi }) {
                 Let's check out if you really know the world where you're living with this <strong>world geography quiz</strong> !
               </Typography>
             </Grid>
-
-            {questionsFromApi.results.slice(0, 10).map((result, index) => (
-              <Grid item key={index} xs={12} sm={12} md={10}>
-                <RadioQuiz result={result}/>
+            <Grid xs={12} sm={12} md={10}
+                  container
+                  justify="space-between"
+                  alignItems="center"
+                  spacing={2}
+                  direction="column"
+            >
+              <Grid item>
+                <RadioQuiz result={questionsFromApi.results[currentQuestion]}/>
               </Grid>
-            ))}
+              <Grid item>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  onClick={() => setCurrentQuestion(currentQuestion+1)}
+                  item
+                >
+                  Next question
+                </Button>
+              </Grid>
+            </Grid>
 
             <Grid xs={12} sm={12} md={10}>
               <Typography gutterBottom gutterTop variant="h4" component="h3">
@@ -79,12 +110,6 @@ function Geography({ questionsFromApi }) {
                 New questions every time in this <strong>world geography quiz</strong> !
               </Typography>
             </Grid>
-
-            {questionsFromApi.results.slice(11, 21).map((result, index) => (
-              <Grid item gutterBottom gutterTop key={index} xs={12} sm={12} md={10}>
-                <RadioQuiz result={result}/>
-              </Grid>
-            ))}
 
           </Grid>
         </Container>

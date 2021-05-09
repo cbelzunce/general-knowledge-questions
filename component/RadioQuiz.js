@@ -109,8 +109,8 @@ export default function RadioQuiz(props) {
         >
         {
           props.result[currentQuestion]
-            ? props.result[currentQuestion].answers.map((answer) => {
-          return <FormControlLabel value={answer} control={<Radio/>} label={answer}/>
+            ? props.result[currentQuestion].answers.map((answer, index) => {
+          return <FormControlLabel key={index} value={answer} control={<Radio/>} label={answer}/>
         })
             : ''
         }
@@ -126,7 +126,6 @@ export default function RadioQuiz(props) {
             variant="outlined"
             color="primary"
             onClick={() => setCurrentQuestion(() => {updateQuestion()})}
-            item
             >
             Next question
           </Button>

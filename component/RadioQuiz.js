@@ -22,6 +22,9 @@ export default function RadioQuiz(props) {
   const [helperText, setHelperText] = React.useState('Choose wisely');
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
+  const countQuestions = props.result.length;
+  const firstQuestionId = props.result[0].id;
+  const [disable, setDisable] = useState(false);
 
   const classes = useStyles();
 
@@ -32,10 +35,21 @@ export default function RadioQuiz(props) {
   };
 
   const updateQuestion = () => {
-    setCurrentQuestion(currentQuestion+1)
-    setHelperText(' ')
-    setError(false)
-    setValue('')
+
+    if (currentQuestion < countQuestions) {
+      setCurrentQuestion(currentQuestion+1)
+
+      setHelperText(' ');
+      setError(false);
+      setValue('');
+      setDisable(false);
+    }
+  }
+
+  const resetQuiz = () => {
+    setCurrentQuestion(firstQuestionId);
+    setScore(0)
+    setError(false);
   }
 
   const handleSubmit = (event) => {
@@ -45,19 +59,19 @@ export default function RadioQuiz(props) {
     if (value === correctAnswer) {
       setHelperText('Good!');
       setError(false);
-      setScore(score+1)
+      setScore(score+1);
+
     } else if (value === '') {
       setHelperText('Please select an option.');
       setError(true);
+
     } else {
       setHelperText('Sorry, wrong answer! The correct answer was:' + correctAnswer);
       setError(true);
     }
-  };
 
-  // if (error === true) {
-  //   setCorrection('The good answer was {props.result[currentQuestion].correct_answer}')
-  // }
+    setDisable(true);
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -67,30 +81,59 @@ export default function RadioQuiz(props) {
         error={error}
         variant="standard"
       >
-        <FormLabel><h3>{props.result[currentQuestion].question}</h3></FormLabel>
+        <FormLabel>
+          <h3>
+            {
+              currentQuestion < countQuestions
+                ? props.result[currentQuestion].question
+                : <>
+                    <p>Votre Score : {score} / {countQuestions}</p>
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      onClick={() => setCurrentQuestion(() => {resetQuiz()})}
+                      item
+                    >
+                      Try Again
+                    </Button>
+                  </>
+                // 'Votre Score : ' + score + ' / ' + countQuestions + resetButton
+            }
+          </h3>
+        </FormLabel>
         <RadioGroup
           aria-label="quiz"
           name="quiz"
           value={value}
           onChange={handleRadioChange}
         >
-        {props.result[currentQuestion].answers.map((answer) => {
+        {
+          props.result[currentQuestion]
+            ? props.result[currentQuestion].answers.map((answer) => {
           return <FormControlLabel value={answer} control={<Radio/>} label={answer}/>
-        })}
+        })
+            : ''
+        }
         </RadioGroup>
-        <FormHelperText>{helperText}</FormHelperText>
+        <FormHelperText>{currentQuestion < countQuestions ? helperText : ''}</FormHelperText>
 
-        <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">
-          Check Answer
-        </Button>
-        <Button
-          variant="outlined"
-          color="primary"
-          onClick={() => setCurrentQuestion(() => {updateQuestion()})}
-          item
-        >
-          Next question
-        </Button>
+        {currentQuestion < countQuestions &&
+        <>
+          <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined" disabled={disable}>
+            Check Answer
+          </Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={() => setCurrentQuestion(() => {updateQuestion()})}
+            item
+            >
+            Next question
+          </Button>
+        </>
+        }
+
+
       </FormControl>
     </form>
   );

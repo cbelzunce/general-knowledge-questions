@@ -23,8 +23,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Geography({ questionsFromApi }) {
   const classes = useStyles();
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(0);
 
   questionsFromApi.results.map((question) => {
 
@@ -68,12 +66,12 @@ function Geography({ questionsFromApi }) {
       <main>
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={6}>
-            <Grid xs={12} sm={12} md={10}>
-              <Typography gutterBottom variant="h1" component="h2">
+            <Grid>
+              <Typography variant="h1" component="h2">
                 Geography quiz
               </Typography>
 
-              <Typography subtitle1 paragraph>
+              <Typography paragraph>
                 Hundreds of <strong>geography quiz questions</strong> to help you improve your general knowledge skills. A
                 large variety of themes are explored : countries, cities, capital cities, people, oceans, economy...
                 Let's check out if you really know the world where you're living with this <strong>world geography quiz</strong> !
@@ -87,30 +85,19 @@ function Geography({ questionsFromApi }) {
                   direction="column"
             >
               <Grid item>
-                <RadioQuiz result={questionsFromApi.results[currentQuestion]}/>
-              </Grid>
-              <Grid item>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  onClick={() => setCurrentQuestion(currentQuestion+1)}
-                  item
-                >
-                  Next question
-                </Button>
+                <RadioQuiz result={questionsFromApi.results}/>
               </Grid>
             </Grid>
 
             <Grid xs={12} sm={12} md={10}>
-              <Typography gutterBottom gutterTop variant="h4" component="h3">
+              <Typography variant="h4" component="h3">
                 Geography quizzes
               </Typography>
-              <Typography subtitle2 paragraph>
+              <Typography paragraph>
                 Another serie of <strong>quiz questions</strong> to help you prepare an exam, or just to play with friends.
                 New questions every time in this <strong>world geography quiz</strong> !
               </Typography>
             </Grid>
-
           </Grid>
         </Container>
 

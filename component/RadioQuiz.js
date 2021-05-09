@@ -7,6 +7,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core'
+import { useState } from 'react'
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -19,6 +20,8 @@ export default function RadioQuiz(props) {
   const [value, setValue] = React.useState('');
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState('Choose wisely');
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [score, setScore] = useState(0);
 
   const classes = useStyles();
 
@@ -28,22 +31,33 @@ export default function RadioQuiz(props) {
     setError(false);
   };
 
+  const updateQuestion = () => {
+    setCurrentQuestion(currentQuestion+1)
+    setHelperText(' ')
+    setError(false)
+    setValue('')
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    let correctAnswer = props.result[currentQuestion].correct_answer;
 
-    if (value === props.result.correct_answer) {
-      setHelperText('You got it!');
+    if (value === correctAnswer) {
+      setHelperText('Good!');
       setError(false);
-      props.updateScore()
-
+      setScore(score+1)
     } else if (value === '') {
       setHelperText('Please select an option.');
       setError(true);
     } else {
-      setHelperText('Sorry, wrong answer!');
+      setHelperText('Sorry, wrong answer! The correct answer was:' + correctAnswer);
       setError(true);
     }
   };
+
+  // if (error === true) {
+  //   setCorrection('The good answer was {props.result[currentQuestion].correct_answer}')
+  // }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -53,20 +67,29 @@ export default function RadioQuiz(props) {
         error={error}
         variant="standard"
       >
-        <FormLabel><h3>{props.result.question}</h3></FormLabel>
+        <FormLabel><h3>{props.result[currentQuestion].question}</h3></FormLabel>
         <RadioGroup
           aria-label="quiz"
           name="quiz"
           value={value}
           onChange={handleRadioChange}
         >
-        {props.result.answers.map((answer) => {
+        {props.result[currentQuestion].answers.map((answer) => {
           return <FormControlLabel value={answer} control={<Radio/>} label={answer}/>
         })}
         </RadioGroup>
         <FormHelperText>{helperText}</FormHelperText>
+
         <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">
           Check Answer
+        </Button>
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={() => setCurrentQuestion(() => {updateQuestion()})}
+          item
+        >
+          Next question
         </Button>
       </FormControl>
     </form>

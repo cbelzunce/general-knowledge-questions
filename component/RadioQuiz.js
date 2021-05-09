@@ -6,15 +6,8 @@ import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core'
 import { useState } from 'react'
-
-const useStyles = makeStyles((theme) => ({
-  cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
-}));
+import { makeStyles } from '@material-ui/core'
 
 export default function RadioQuiz(props) {
   const [value, setValue] = React.useState('');
@@ -22,11 +15,9 @@ export default function RadioQuiz(props) {
   const [helperText, setHelperText] = React.useState('Choose wisely');
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
+  const [disable, setDisable] = useState(false);
   const countQuestions = props.result.length;
   const firstQuestionId = props.result[0].id;
-  const [disable, setDisable] = useState(false);
-
-  const classes = useStyles();
 
   const handleRadioChange = (event) => {
     setValue(event.target.value);
@@ -60,6 +51,7 @@ export default function RadioQuiz(props) {
       setHelperText('Good!');
       setError(false);
       setScore(score+1);
+      setDisable(true);
 
     } else if (value === '') {
       setHelperText('Please select an option.');
@@ -68,9 +60,8 @@ export default function RadioQuiz(props) {
     } else {
       setHelperText('Sorry, wrong answer! The correct answer was:' + correctAnswer);
       setError(true);
+      setDisable(true);
     }
-
-    setDisable(true);
   };
 
   return (
@@ -97,7 +88,6 @@ export default function RadioQuiz(props) {
                       Try Again
                     </Button>
                   </>
-                // 'Votre Score : ' + score + ' / ' + countQuestions + resetButton
             }
           </h3>
         </FormLabel>
@@ -118,21 +108,20 @@ export default function RadioQuiz(props) {
         <FormHelperText>{currentQuestion < countQuestions ? helperText : ''}</FormHelperText>
 
         {currentQuestion < countQuestions &&
-        <>
-          <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined" disabled={disable}>
-            Check Answer
-          </Button>
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={() => setCurrentQuestion(() => {updateQuestion()})}
-            >
-            Next question
-          </Button>
-        </>
+          <>
+            <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined" disabled={disable}>
+              Check Answer
+            </Button>
+            <br/>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => setCurrentQuestion(() => {updateQuestion()})}
+              >
+              Next question
+            </Button>
+          </>
         }
-
-
       </FormControl>
     </form>
   );

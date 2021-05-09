@@ -11,8 +11,6 @@ import he from 'he'
 import Card from '@material-ui/core/Card/Card'
 import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
-import CardActions from '@material-ui/core/CardActions/CardActions'
-import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -64,7 +62,6 @@ function Geography({ questionsFromApi }) {
 
   // todo récupérer les questions (autre source : https://trivia.willfry.co.uk/example)
   // Formatter les questions des différentes sources pour format commun
-  // si mauvaise réponse, surligner la bonne et bloquer la possibilité de cocher une autre (on les met en disable)
 
   return (
     <React.Fragment>
@@ -81,7 +78,7 @@ function Geography({ questionsFromApi }) {
                     title='Geography'
                   />
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="h5" component="h1">
                       Geography quiz
                     </Typography>
                     <Typography paragraph>
@@ -89,17 +86,14 @@ function Geography({ questionsFromApi }) {
                       large variety of themes are explored : countries, cities, capital cities, people, oceans, economy...
                       Let's check out if you really know the world where you're living with this <strong>world geography quiz</strong> !
                     </Typography>
-                    <Typography>
-                      <RadioQuiz result={questionsFromApi.results.slice(0, 10)}/>
-                    </Typography>
+                    <RadioQuiz result={questionsFromApi.results.slice(0, 10)}/>
                   </CardContent>
                 </Card>
               </Grid>
           </Grid>
-        </Container>
+        {/*</Container>*/}
 
-
-        <Container className={classes.cardGrid} maxWidth="md">
+        {/*<Container className={classes.cardGrid} maxWidth="md">*/}
           <Grid container spacing={4}>
             <Grid item xs={12} sm={12} md={12}>
               <Card className={classes.card}>

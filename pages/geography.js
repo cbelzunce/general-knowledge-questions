@@ -33,10 +33,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Geography({ questionsFromApi }) {
+function Geography({ questions }) {
   const classes = useStyles();
 
-  questionsFromApi.results.map((question, index) => {
+  questions.results.map((question, index) => {
     question.id = index;
 
     // convert html entities
@@ -44,8 +44,8 @@ function Geography({ questionsFromApi }) {
 
     // Mix all answers
     question.answers = []
-    question.answers.push(question.correct_answer)
-    question.answers = question.answers.concat(question.incorrect_answers)
+    question.answers.push(question.correctAnswer)
+    question.answers = question.answers.concat(question.incorrectAnswers)
 
     question.answers = question.answers
       .map((a) =>  he.decode(a))
@@ -86,7 +86,7 @@ function Geography({ questionsFromApi }) {
                       large variety of themes are explored : countries, cities, capital cities, people, oceans, economy...
                       Let's check out if you really know the world where you're living with this <strong>world geography quiz</strong> !
                     </Typography>
-                    <RadioQuiz result={questionsFromApi.results.slice(0, 10)}/>
+                    <RadioQuiz result={questions.results.slice(0, 10)}/>
                   </CardContent>
                 </Card>
               </Grid>
@@ -111,7 +111,7 @@ function Geography({ questionsFromApi }) {
                     New questions every time in this <strong>world geography quiz</strong> !
                   </Typography>
                   <Typography>
-                    <RadioQuiz result={questionsFromApi.results.slice(11, 21)}/>
+                    <RadioQuiz result={questions.results.slice(11, 21)}/>
                   </Typography>
                 </CardContent>
               </Card>
@@ -125,12 +125,27 @@ function Geography({ questionsFromApi }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('https://opentdb.com/api.php?amount=100&category=22')
+  const res = await fetch('https://opentdb.com/api.php?amount=50&category=22')
   const questionsFromApi = await res.json();
+  const searchRegExp = /incorrect_answers/g;
+  const searchRegExp2 = /correct_answer/g;
+  const res2 = await fetch('https://trivia.willfry.co.uk/api/questions?categories=geography&limit=1')
+  const questionsFromApi2 = await res2.json();
+
+  let questions = JSON.stringify(questionsFromApi)
+    .replace(searchRegExp, "incorrectAnswers")
+    .replace(searchRegExp2, "correctAnswer");
+
+  questions = JSON.parse(questions);
+
+  // todo : garder seulement 3 incorrectAnswers de questionsFromApi2,
+  // let questionsArray = JSON.parse(questionsFromApi2);
+  // console.log(questionsArray)
+  //  y ajouter la correctAnswer,
 
   return {
     props: {
-      questionsFromApi,
+      questions
     },
   }
 }

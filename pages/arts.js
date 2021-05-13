@@ -113,7 +113,7 @@ function Arts({ questions }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('https://opentdb.com/api.php?amount=50&category=25')
+  const res = await fetch('https://opentdb.com/api.php?amount=25&category=25')
   const questionsFromApi = await res.json();
   const searchRegExp = /incorrect_answers/g;
   const searchRegExp2 = /correct_answer/g;

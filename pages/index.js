@@ -41,7 +41,7 @@ const cards = [
   {id: 1, page:"/history", title: "History", image:"history.jpg", presentation: parse("<strong>General knowledge trivia</strong> about world history, civilisations, characters...")},
   {id: 2, page:"/geography", title: "Geography", image:"geography.jpg", presentation: parse("<strong>General knowledge facts</strong> about countries and cities all around the world.")},
   {id: 3, page:"/science", title: "Science", image:"science.jpg", presentation: parse("<strong>General knowledge quiz online</strong> about famous scientists, inventions, etc.")},
-  {id: 4, page:"/nature", title: "Nature", image:"nature.jpg", presentation: parse("<strong>General knowledge quiz game</strong> with questions about animals, plants, weather...")},
+  {id: 4, page:"/nature", title: "Animals", image:"nature.jpg", presentation: parse("<strong>General knowledge quiz game</strong> with questions about animals")},
   {id: 5, page:"/arts", title: "Arts", image:"arts.jpg", presentation: parse("<strong>General knowledge trivia</strong> about music, painting, theatre, literature...")},
   {id: 6, page:"/cinema", title: "Cinema", image:"cinema.jpeg", presentation: parse("<strong>Cinema general knowledge questions</strong> about movies, films, actors, etc.")},
 ];

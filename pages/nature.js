@@ -73,7 +73,7 @@ function Nature({ questions }) {
                       Nature quiz
                     </Typography>
                     <Typography paragraph>
-                      Hundreds of <strong>nature quiz questions</strong> to help you improve your general knowledge skills. A
+                      Hundreds of <strong>animal quiz questions</strong> to help you improve your general knowledge skills. A
                       large variety of themes are explored : countries, cities, capital cities, people, oceans, economy...
                       Let's check out if you really know the world where you're living with this <strong>world nature quiz</strong> !
                     </Typography>

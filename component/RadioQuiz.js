@@ -7,7 +7,6 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 import { useState } from 'react'
-import { makeStyles } from '@material-ui/core'
 
 export default function RadioQuiz(props) {
   const [value, setValue] = React.useState('');
@@ -45,7 +44,7 @@ export default function RadioQuiz(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    let correctAnswer = props.result[currentQuestion].correct_answer;
+    let correctAnswer = props.result[currentQuestion].correctAnswer;
 
     if (value === correctAnswer) {
       setHelperText('Good!');
@@ -58,7 +57,7 @@ export default function RadioQuiz(props) {
       setError(true);
 
     } else {
-      setHelperText('Sorry, wrong answer! The correct answer was:' + correctAnswer);
+      setHelperText('Sorry, wrong answer! The correct answer was: ' + correctAnswer);
       setError(true);
       setDisable(true);
     }

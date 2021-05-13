@@ -43,7 +43,7 @@ const cards = [
   {id: 3, page:"/science", title: "Science", image:"science.jpg", presentation: parse("<strong>General knowledge quiz online</strong> about famous scientists, inventions, etc.")},
   {id: 4, page:"/nature", title: "Nature", image:"nature.jpg", presentation: parse("<strong>General knowledge quiz game</strong> with questions about animals, plants, weather...")},
   {id: 5, page:"/arts", title: "Arts", image:"arts.jpg", presentation: parse("<strong>General knowledge trivia</strong> about music, painting, theatre, literature...")},
-  {id: 6, page:"/fun", title: "Fun facts", image:"fun.jpg", presentation: parse("<strong>Funny general knowledge questions</strong> about unexpected and surprising topics.")},
+  {id: 6, page:"/cinema", title: "Cinema", image:"cinema.jpeg", presentation: parse("<strong>Cinema general knowledge questions</strong> about movies, films, actors, etc.")},
 ];
 
 export default function Home() {

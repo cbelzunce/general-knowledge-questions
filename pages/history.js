@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Geography({ questions }) {
+function History({ questions }) {
   const classes = useStyles();
 
   questions.results.map((question, index) => {
@@ -54,15 +54,6 @@ function Geography({ questions }) {
       .map((a) => a[1])
   })
 
-  //todo define styles et design
-  // trouver images libres de droit
-  // Faire 10 séries de 10 questions avec petit paragraphe SEO
-  // Export PDF
-  // todo mélanger questions (éviter duplicate)
-
-  // todo récupérer les questions (autre source : https://trivia.willfry.co.uk/example)
-  // Formatter les questions des différentes sources pour format commun
-
   return (
     <React.Fragment>
       <CssBaseline />
@@ -74,38 +65,41 @@ function Geography({ questions }) {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image='geography.jpg'
-                    title='Geography'
+                    image='history.jpg'
+                    title='History'
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h1">
-                      Geography quiz
+                      History quiz
                     </Typography>
                     <Typography paragraph>
-                      Hundreds of <strong>geography quiz questions</strong> to help you improve your general knowledge skills. A
+                      Hundreds of <strong>history quiz questions</strong> to help you improve your general knowledge skills. A
                       large variety of themes are explored : countries, cities, capital cities, people, oceans, economy...
-                      Let's check out if you really know the world where you're living with this <strong>world geography quiz</strong> !
+                      Let's check out if you really know the world where you're living with this <strong>world history quiz</strong> !
                     </Typography>
                     <RadioQuiz result={questions.results.slice(0, 10)}/>
                   </CardContent>
                 </Card>
               </Grid>
           </Grid>
+        {/*</Container>*/}
+
+        {/*<Container className={classes.cardGrid} maxWidth="md">*/}
           <Grid container spacing={4}>
             <Grid item xs={12} sm={12} md={12}>
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image='geography.jpg'
-                  title='Geography'
+                  image='history.jpg'
+                  title='History'
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Geography quizzes
+                    History quizzes
                   </Typography>
                   <Typography paragraph>
                     Another serie of <strong>quiz questions</strong> to help you prepare an exam, or just to play with friends.
-                    New questions every time in this <strong>world geography quiz</strong> !
+                    New questions every time in this <strong>world history quiz</strong> !
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(11, 21)}/>
@@ -122,24 +116,17 @@ function Geography({ questions }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('https://opentdb.com/api.php?amount=50&category=22')
+  const res = await fetch('https://opentdb.com/api.php?amount=50&category=23')
   const questionsFromApi = await res.json();
   const searchRegExp = /incorrect_answers/g;
   const searchRegExp2 = /correct_answer/g;
-  // const res2 = await fetch('https://trivia.willfry.co.uk/api/questions?categories=geography&limit=1')
-  // const questionsFromApi2 = await res2.json();
-
+console.log(questionsFromApi)
   let questions = JSON.stringify(questionsFromApi)
     .replace(searchRegExp, "incorrectAnswers")
     .replace(searchRegExp2, "correctAnswer")
   ;
 
   questions = JSON.parse(questions);
-
-  // todo : garder seulement 3 incorrectAnswers de questionsFromApi2,
-  // let questionsArray = JSON.parse(questionsFromApi2);
-  // console.log(questionsArray)
-  //  y ajouter la correctAnswer,
 
   return {
     props: {
@@ -148,4 +135,4 @@ export async function getStaticProps() {
   }
 }
 
-export default Geography
+export default History

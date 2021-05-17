@@ -36,14 +36,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// http://geekhmer.github.io/blog/2018/03/29/import-markdown-files-and-serve-its-content-in-next-dot-js/
 
 const cards = [
-  {id: 1, page:"/history", title: "History", image:"history.jpg", presentation: parse("<strong>General knowledge trivia</strong> about world history, civilisations, characters...")},
-  {id: 2, page:"/geography", title: "Geography", image:"geography.jpg", presentation: parse("<strong>General knowledge facts</strong> about countries and cities all around the world.")},
-  {id: 3, page:"/science", title: "Science", image:"science.jpg", presentation: parse("<strong>General knowledge quiz online</strong> about famous scientists, inventions, etc.")},
-  {id: 4, page:"/nature", title: "Animals", image:"nature.jpg", presentation: parse("<strong>General knowledge quiz game</strong> with questions about animals")},
-  {id: 5, page:"/arts", title: "Arts", image:"arts.jpg", presentation: parse("<strong>General knowledge trivia</strong> about music, painting, theatre, literature...")},
-  {id: 6, page:"/cinema", title: "Cinema", image:"cinema.jpeg", presentation: parse("<strong>Cinema general knowledge questions</strong> about movies, films, actors, etc.")},
+  {id: 1, page:"/history", title: "History", keyword:"General trivia questions and answers", image:"history.jpg", presentation: parse("<strong>General knowledge quizz</strong> about world history, civilisations, characters...")},
+  {id: 2, page:"/geography", title: "Geography", keyword:"General knowledge questions", image:"geography.jpg", presentation: parse("<strong>General knowledge quizzes</strong> about countries and cities all around the world.")},
+  {id: 3, page:"/science", title: "Science", keyword:"General knowledge test", image:"science.jpg", presentation: parse("<strong>General knowledge quizzes</strong> about famous scientists, inventions, etc.")},
+  {id: 4, page:"/nature", title: "Animals", keyword:"GK questions", image:"nature.jpg", presentation: parse("<strong>General knowledge quizz</strong> about animals")},
+  {id: 5, page:"/arts", title: "Arts", keyword:"GK quizz", image:"arts.jpg", presentation: parse("<strong>General knowledge quizz</strong> about music, painting, theatre, literature...")},
+  {id: 6, page:"/cinema", title: "Cinema", keyword:"General knowledge questions with answers", image:"cinema.jpeg", presentation: parse("<strong>General knowledge quizzes</strong> about movies, films, actors, etc.")},
 ];
 
 export default function Home() {
@@ -76,7 +77,7 @@ export default function Home() {
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary" onClick={() => router.push(card.page)}>
-                      Start quiz
+                      {card.keyword} : start
                     </Button>
                   </CardActions>
                 </Card>

@@ -20,7 +20,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        General knowledge questions
+        General knowledge quizzes
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -46,7 +46,7 @@ export default function Footer() {
           General knowledge quiz online
         </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          General knowledge questions for the win !
+          General knowledge quizzes for the win !
         </Typography>
         <Copyright />
       </footer>

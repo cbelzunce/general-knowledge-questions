@@ -75,16 +75,16 @@ function Geography({ questions }) {
                   <CardMedia
                     className={classes.cardMedia}
                     image='geography.jpg'
-                    title='Geography'
+                    title='general knowledge question geography'
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h1">
-                      Geography quiz
+                      General knowledge questions : geography quiz #1
                     </Typography>
                     <Typography paragraph>
-                      Hundreds of <strong>geography quiz questions</strong> to help you improve your general knowledge skills. A
-                      large variety of themes are explored : countries, cities, capital cities, people, oceans, economy...
-                      Let's check out if you really know the world where you're living with this <strong>world geography quiz</strong> !
+                      Hundreds of <strong>general knowledge questions</strong> about geography to help you improve your gk skills. A
+                      large variety of themes are explored : countries, capital cities, people, oceans, economy...
+                      Let's check out if you really know the world where you're living with this <strong>general knowledge questions</strong> geography quizz !
                     </Typography>
                     <RadioQuiz result={questions.results.slice(0, 10)}/>
                   </CardContent>
@@ -97,18 +97,44 @@ function Geography({ questions }) {
                 <CardMedia
                   className={classes.cardMedia}
                   image='geography.jpg'
-                  title='Geography'
+                  title='general knowledge questions geography'
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Geography quizzes
+                    General knowledge questions : geography quiz #2
                   </Typography>
                   <Typography paragraph>
-                    Another serie of <strong>quiz questions</strong> to help you prepare an exam, or just to play with friends.
-                    New questions every time in this <strong>world geography quiz</strong> !
+                    Another serie of <strong>general knowledge questions</strong> to help you prepare an exam, 
+                    or just to play with friends.
+                    Will you be able to pick up the challenge ?
+                    New questions every time in this <strong>general knowledge questions geography quiz</strong> !
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(11, 21)}/>
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid container spacing={4}>
+            <Grid item xs={12} sm={12} md={12}>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image='geography.jpg'
+                  title='general knowledge questions'
+                />
+                <CardContent className={classes.cardContent}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    General knowledge questions : geography quiz #3
+                  </Typography>
+                  <Typography paragraph>
+                    Our last serie of <strong>general knowledge questions</strong>.
+                    You know the rule : try to find the right answer, and do not cheat !
+                    Train harder to shine in society, brighter than ever.
+                  </Typography>
+                  <Typography>
+                    <RadioQuiz result={questions.results.slice(22, 32)}/>
                   </Typography>
                 </CardContent>
               </Card>

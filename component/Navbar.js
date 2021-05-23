@@ -14,14 +14,14 @@ export default function Navbar() {
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta charSet="utf-8" />
-        <title>Your page title</title>
-        <meta name="description" content="An example of a meta description." />
+        <title>General knowledge quizzes</title>
+        <meta name="description" content="General knowledge quizzes in various domains : geography quizz, history trivial, nature gk quizzes..." />
         <link rel="icon" type="image/png" sizes="16x16" href="" />
       </Head>
       <AppBar position="relative">
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap onClick={() => router.push('/')}>
-            General knowledge questions
+            General knowledge quizzes
           </Typography>
         </Toolbar>
       </AppBar>

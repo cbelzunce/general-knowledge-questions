@@ -70,21 +70,18 @@ function History({ questions }) {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h1">
-                      History quiz
+                      General trivia questions and answers : history quizz #1
                     </Typography>
                     <Typography paragraph>
-                      Hundreds of <strong>history quiz questions</strong> to help you improve your general knowledge skills. A
-                      large variety of themes are explored : countries, cities, capital cities, people, oceans, economy...
-                      Let's check out if you really know the world where you're living with this <strong>world history quiz</strong> !
+                      Hundreds of <strong>general trivia questions and answers</strong> about history, to help you improve your general knowledge skills.
+                      Answer our multiple-choice quiz questions as accurately as possible.
+                      find out how much you know about history with this <strong>quiz</strong> !
                     </Typography>
                     <RadioQuiz result={questions.results.slice(0, 10)}/>
                   </CardContent>
                 </Card>
               </Grid>
           </Grid>
-        {/*</Container>*/}
-
-        {/*<Container className={classes.cardGrid} maxWidth="md">*/}
           <Grid container spacing={4}>
             <Grid item xs={12} sm={12} md={12}>
               <Card className={classes.card}>
@@ -95,14 +92,41 @@ function History({ questions }) {
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    History quizzes
+                    General trivia questions and answers : history quizz #2
                   </Typography>
                   <Typography paragraph>
-                    Another serie of <strong>quiz questions</strong> to help you prepare an exam, or just to play with friends.
-                    New questions every time in this <strong>world history quiz</strong> !
+                    Another serie of <strong>gk trivia questions</strong> to help you prepare an exam, 
+                    or just for fun.
+                    Read each question carefully and choose the response that you think is correct.
+                    Find out just how smart -or ignorant- you are with this history quiz !
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(11, 21)}/>
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={4}>
+            <Grid item xs={12} sm={12} md={12}>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image='history.jpg'
+                  title='History'
+                />
+                <CardContent className={classes.cardContent}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    General trivia questions and answers : history quizz #3
+                  </Typography>
+                  <Typography paragraph>
+                    Our last <strong>general trivia questions and answers</strong> about history.
+                    Simply answer history questions and score as much as you can.
+                    This quiz is not only a test of your history gk, but also a funny way to learn a few things you do not know yet !
+                  </Typography>
+                  <Typography>
+                    <RadioQuiz result={questions.results.slice(22, 32)}/>
                   </Typography>
                 </CardContent>
               </Card>
@@ -120,7 +144,7 @@ export async function getStaticProps() {
   const questionsFromApi = await res.json();
   const searchRegExp = /incorrect_answers/g;
   const searchRegExp2 = /correct_answer/g;
-console.log(questionsFromApi)
+
   let questions = JSON.stringify(questionsFromApi)
     .replace(searchRegExp, "incorrectAnswers")
     .replace(searchRegExp2, "correctAnswer")

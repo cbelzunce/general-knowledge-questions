@@ -21,7 +21,7 @@ HomePage : General knowledge quizzes
     - pour animals : gk questions : animals
       et décliner gk questions
 
-    - pour arts : gk quizz
+    - pour arts : gk quiz
 
     - pour cinema : general knowledge questions with answers
 
@@ -55,3 +55,4 @@ Discover your score at the end of the quiz.
 https://www.edudose.com/gk/
 
 Todo FINISH SEO : Arts, et faire Science et Animale
+Todo bug : si réponse a des accents non décodés, pas possible d'avoir juste

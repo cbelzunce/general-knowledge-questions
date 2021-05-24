@@ -41,6 +41,7 @@ function History({ questions }) {
 
     // convert html entities
     question.question = he.decode(question.question)
+    question.correctAnswer = he.decode(question.correctAnswer)
 
     // Mix all answers
     question.answers = []

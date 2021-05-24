@@ -41,6 +41,7 @@ function Arts({ questions }) {
 
     // convert html entities
     question.question = he.decode(question.question)
+    question.correctAnswer = he.decode(question.correctAnswer)
 
     // Mix all answers
     question.answers = []
@@ -70,10 +71,13 @@ function Arts({ questions }) {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h1">
-                      Gk quizz : arts #1
+                      Gk quiz : arts #1
                     </Typography>
                     <Typography paragraph>
-                    This is the first <strong>gk quizz</strong> about arts to help you becoming better at quizzes. 
+                      This is our first <strong>gk quiz</strong> about arts to help you becoming better at quizzes.
+                      Painters, sculptors, artistic movements, fun facts about pantings, are some of the topics of the following questions.
+                      The rule is simple: just try to figure which answer is the correct one among the list.
+                      Ready? Go!
                     </Typography>
                     <RadioQuiz result={questions.results.slice(0, 10)}/>
                   </CardContent>
@@ -90,11 +94,13 @@ function Arts({ questions }) {
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Gk quizz : arts #2
+                    Gk quiz : arts #2
                   </Typography>
                   <Typography paragraph>
-                    Another serie of <strong>quiz questions</strong> to help you prepare an exam, or just to play with friends.
-                    New questions every time in this <strong>world arts quiz</strong> !
+                    One more batch of 10 <strong>quiz questions</strong> to help you practise an assessment, 
+                    or just for pleasure.
+                    The questions change each time you come back to this page.
+                    Try to reach the highest score, and check it at the end of the quiz.
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(11, 21)}/>
@@ -114,11 +120,12 @@ function Arts({ questions }) {
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Gk quizz : arts #3
+                    Gk quiz : arts #3
                   </Typography>
                   <Typography paragraph>
-                    Another serie of <strong>quiz questions</strong> to help you prepare an exam, or just to play with friends.
-                    New questions every time in this <strong>world arts quiz</strong> !
+                    This is the last gk quiz for the arts category.
+                    Simply try to find the correct answer, and socre as much as you can.
+                    Learning new things while having fun, isn'it wonderful?
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(11, 21)}/>
@@ -139,7 +146,7 @@ export async function getStaticProps() {
   const questionsFromApi = await res.json();
   const searchRegExp = /incorrect_answers/g;
   const searchRegExp2 = /correct_answer/g;
-console.log(questionsFromApi)
+
   let questions = JSON.stringify(questionsFromApi)
     .replace(searchRegExp, "incorrectAnswers")
     .replace(searchRegExp2, "correctAnswer")

@@ -49,4 +49,9 @@ Play thousands of free online trivia quiz games. There is a fun quiz about virtu
 Are you a quizmaster? Test your knowledge of all things Disney, from Gravity Falls to Simba to Ariel, and play all of our amazing quiz games on Disney LOL!
 Looking for a fun personality or tricky trivia quiz? We have everything you need right here including music, Disney, Harry Potter and loads more.
 
+Don't worry if you fail, you can replay the quiz if you want.
+Discover your score at the end of the quiz.
+
 https://www.edudose.com/gk/
+
+Todo FINISH SEO : Arts, et faire Science et Animale

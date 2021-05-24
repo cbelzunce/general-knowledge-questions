@@ -70,12 +70,13 @@ function Cinema({ questions }) {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h1">
-                      Cinema quiz
+                      General trivia questions with answers : cinema quizz #1
                     </Typography>
                     <Typography paragraph>
-                      Hundreds of <strong>cinema quiz questions</strong> to help you improve your general knowledge skills. A
-                      large variety of themes are explored : countries, cities, capital cities, people, oceans, economy...
-                      Let's check out if you really know the world where you're living with this <strong>world cinema quiz</strong> !
+                      Numbers of <strong>cinema trivia questions</strong> with answers to become better 
+                      at quizzes games. A wide diversity of topics are waiting for you: 
+                      actors, movies, directors, people... Simply answer every question as carefully as you can. 
+                      Are you a quizmaster? Let's find out!
                     </Typography>
                     <RadioQuiz result={questions.results.slice(0, 10)}/>
                   </CardContent>
@@ -92,11 +93,40 @@ function Cinema({ questions }) {
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Cinema quizzes
+                    General trivia questions with answers : cinema quizz #2
                   </Typography>
                   <Typography paragraph>
-                    Another serie of <strong>quiz questions</strong> to help you prepare an exam, or just to play with friends.
-                    New questions every time in this <strong>world cinema quiz</strong> !
+                    So you want more questions? This is Another batch of <strong>quiz questions</strong> 
+                    to help you prepare an exam, or just to play with friends. 
+                    All you have to do is staying focused (and please, don't cheat!). 
+                    Discover your score at the end of the quiz. 
+                    New questions every time in this world cinema quiz!
+                  </Typography>
+                  <Typography>
+                    <RadioQuiz result={questions.results.slice(11, 21)}/>
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={4}>
+            <Grid item xs={12} sm={12} md={12}>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image='cinema.jpeg'
+                  title='Cinema'
+                />
+                <CardContent className={classes.cardContent}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    General trivia questions with answers : cinema quizz #3
+                  </Typography>
+                  <Typography paragraph>
+                    This is our last batch of 10 <strong>general trivia questions with answers</strong> 
+                    about cinema. This questioning is not only a test of your cinema general knowledge 
+                    but also a fun way to discover some stuff you don't know yet! 
+                    Just answer each question and try to reach the highest score.
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(11, 21)}/>

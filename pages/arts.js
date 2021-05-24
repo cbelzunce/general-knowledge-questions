@@ -70,12 +70,10 @@ function Arts({ questions }) {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h1">
-                      Arts quiz
+                      Gk quizz : arts #1
                     </Typography>
                     <Typography paragraph>
-                      Hundreds of <strong>arts quiz questions</strong> to help you improve your general knowledge skills. A
-                      large variety of themes are explored : countries, cities, capital cities, people, oceans, economy...
-                      Let's check out if you really know the world where you're living with this <strong>world arts quiz</strong> !
+                    This is the first <strong>gk quizz</strong> about arts to help you becoming better at quizzes. 
                     </Typography>
                     <RadioQuiz result={questions.results.slice(0, 10)}/>
                   </CardContent>
@@ -92,7 +90,31 @@ function Arts({ questions }) {
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Arts quizzes
+                    Gk quizz : arts #2
+                  </Typography>
+                  <Typography paragraph>
+                    Another serie of <strong>quiz questions</strong> to help you prepare an exam, or just to play with friends.
+                    New questions every time in this <strong>world arts quiz</strong> !
+                  </Typography>
+                  <Typography>
+                    <RadioQuiz result={questions.results.slice(11, 21)}/>
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={4}>
+            <Grid item xs={12} sm={12} md={12}>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image='arts.jpg'
+                  title='Arts'
+                />
+                <CardContent className={classes.cardContent}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    Gk quizz : arts #3
                   </Typography>
                   <Typography paragraph>
                     Another serie of <strong>quiz questions</strong> to help you prepare an exam, or just to play with friends.

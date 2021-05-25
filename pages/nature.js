@@ -70,12 +70,12 @@ function Nature({ questions }) {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h1">
-                      Nature quiz
+                      Gk questions : animals quiz #1
                     </Typography>
                     <Typography paragraph>
-                      Hundreds of <strong>animal quiz questions</strong> to help you improve your general knowledge skills. A
-                      large variety of themes are explored : countries, cities, capital cities, people, oceans, economy...
-                      Let's check out if you really know the world where you're living with this <strong>world nature quiz</strong> !
+                      This is our first quiz of <strong>gk questions</strong> about animals to help you improve your general knowledge skills. 
+                      A wide variety of topics are explored : ethology, anatomy, species, alimentation, prehistoric animals... you name it !
+                      Find out just how smart -or ignorant- you are about animals with this quiz !
                     </Typography>
                     <RadioQuiz result={questions.results.slice(0, 10)}/>
                   </CardContent>
@@ -92,14 +92,41 @@ function Nature({ questions }) {
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Nature quizzes
+                    Gk questions : animals quiz #2
                   </Typography>
                   <Typography paragraph>
-                    Another serie of <strong>quiz questions</strong> to help you prepare an exam, or just to play with friends.
-                    New questions every time in this <strong>world nature quiz</strong> !
+                    Second series of <strong>gk questions</strong> to help you prepare an assessment, 
+                    or just to play with friends.
+                    Just stay focused and try to figure out which answer is correct.
+                    New questions every time you come back on this page in this quiz about animals!
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(11, 21)}/>
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={4}>
+            <Grid item xs={12} sm={12} md={12}>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image='nature.jpg'
+                  title='Nature'
+                />
+                <CardContent className={classes.cardContent}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    Gk questions : animals quiz #3
+                  </Typography>
+                  <Typography paragraph>
+                    The last <strong>gk questions</strong> series about animals. 
+                    You know the rule: several answers are proposed, but only one is correct.
+                    Try to score as much as you can in this 10 questions series.
+                  </Typography>
+                  <Typography>
+                    <RadioQuiz result={questions.results.slice(22, 32)}/>
                   </Typography>
                 </CardContent>
               </Card>

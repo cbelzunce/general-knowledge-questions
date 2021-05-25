@@ -70,12 +70,13 @@ function Science({ questions }) {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h1">
-                      Science quiz
+                      General knowledge test : science #1
                     </Typography>
                     <Typography paragraph>
-                      Hundreds of <strong>science quiz questions</strong> to help you improve your general knowledge skills. A
-                      large variety of themes are explored : countries, cities, capital cities, people, oceans, economy...
-                      Let's check out if you really know the world where you're living with this <strong>world science quiz</strong> !
+                      This is our first <strong>General knowledge test</strong> about science.
+                      Human body, chemsitry, physics, astronomy, scientists... are some of the themes of the following quiz.
+                      The rule is easy: simply try to figure which answer is the good one.
+                      Ready? Let's go!
                     </Typography>
                     <RadioQuiz result={questions.results.slice(0, 10)}/>
                   </CardContent>
@@ -92,14 +93,42 @@ function Science({ questions }) {
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Science quizzes
+                    General knowledge test : science #2
                   </Typography>
                   <Typography paragraph>
-                    Another serie of <strong>quiz questions</strong> to help you prepare an exam, or just to play with friends.
-                    New questions every time in this <strong>world science quiz</strong> !
+                    So you want to play again ? This is another batch of <strong>gk questions</strong> to test your knowledge and memory.
+                    Our quizzes can help you prepare an exam or a test. Or maybe you just do it for fun !
+                    All you have to do is staying focused. Discover your score at the end of the quiz. 
+                    New questions every time in this science quiz!
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(11, 21)}/>
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={4}>
+            <Grid item xs={12} sm={12} md={12}>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image='science.jpg'
+                  title='Science'
+                />
+                <CardContent className={classes.cardContent}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    General knowledge test : science #3
+                  </Typography>
+                  <Typography paragraph>
+                    Our last <strong>general knowledge test</strong> about science.
+                    Simply answer science questions and score as much as you can.
+                    This quiz is not only a test of your science general knowledge, 
+                    but also a fun way to learn new things !
+                  </Typography>
+                  <Typography>
+                    <RadioQuiz result={questions.results.slice(22, 32)}/>
                   </Typography>
                 </CardContent>
               </Card>

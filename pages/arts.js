@@ -128,7 +128,7 @@ function Arts({ questions }) {
                     Learning new things while having fun, isn'it wonderful?
                   </Typography>
                   <Typography>
-                    <RadioQuiz result={questions.results.slice(11, 21)}/>
+                    <RadioQuiz result={questions.results.slice(22, 32)}/>
                   </Typography>
                 </CardContent>
               </Card>

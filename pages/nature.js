@@ -144,7 +144,7 @@ export async function getStaticProps() {
   const questionsFromApi = await res.json();
   const searchRegExp = /incorrect_answers/g;
   const searchRegExp2 = /correct_answer/g;
-console.log(questionsFromApi)
+
   let questions = JSON.stringify(questionsFromApi)
     .replace(searchRegExp, "incorrectAnswers")
     .replace(searchRegExp2, "correctAnswer")

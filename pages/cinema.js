@@ -130,7 +130,7 @@ function Cinema({ questions }) {
                     Just answer each question and try to reach the highest score.
                   </Typography>
                   <Typography>
-                    <RadioQuiz result={questions.results.slice(11, 21)}/>
+                    <RadioQuiz result={questions.results.slice(22, 32)}/>
                   </Typography>
                 </CardContent>
               </Card>
@@ -148,7 +148,7 @@ export async function getStaticProps() {
   const questionsFromApi = await res.json();
   const searchRegExp = /incorrect_answers/g;
   const searchRegExp2 = /correct_answer/g;
-console.log(questionsFromApi)
+
   let questions = JSON.stringify(questionsFromApi)
     .replace(searchRegExp, "incorrectAnswers")
     .replace(searchRegExp2, "correctAnswer")

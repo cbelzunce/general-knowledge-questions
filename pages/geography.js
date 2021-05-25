@@ -163,11 +163,6 @@ export async function getStaticProps() {
 
   questions = JSON.parse(questions);
 
-  // todo : garder seulement 3 incorrectAnswers de questionsFromApi2,
-  // let questionsArray = JSON.parse(questionsFromApi2);
-  // console.log(questionsArray)
-  //  y ajouter la correctAnswer,
-
   return {
     props: {
       questions

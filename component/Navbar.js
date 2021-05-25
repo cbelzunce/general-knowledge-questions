@@ -5,7 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import { useRouter } from 'next/router'
 import Head from "next/head"
 
-
 export default function Navbar() {
   const router = useRouter();
 

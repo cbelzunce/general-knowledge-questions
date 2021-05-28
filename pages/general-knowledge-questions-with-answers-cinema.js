@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Geography({ questions }) {
+function Cinema({ questions }) {
   const classes = useStyles();
 
   questions.results.map((question, index) => {
@@ -55,15 +55,6 @@ function Geography({ questions }) {
       .map((a) => a[1])
   })
 
-  //todo define styles et design
-  // trouver images libres de droit
-  // Faire 10 séries de 10 questions avec petit paragraphe SEO
-  // Export PDF
-  // todo mélanger questions (éviter duplicate)
-
-  // todo récupérer les questions (autre source : https://trivia.willfry.co.uk/example)
-  // Formatter les questions des différentes sources pour format commun
-
   return (
     <React.Fragment>
       <CssBaseline />
@@ -75,17 +66,18 @@ function Geography({ questions }) {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image='geography.jpg'
-                    title='general knowledge question geography'
+                    image='general_knowledge_questions_with_answers_cinema3.jpg'
+                    title='Cinema'
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h1">
-                      General knowledge questions : geography quiz #1
+                      General trivia questions with answers : cinema quizz #1
                     </Typography>
                     <Typography paragraph>
-                      Hundreds of <strong>general knowledge questions</strong> about geography to help you improve your gk skills. A
-                      large variety of themes are explored : countries, capital cities, people, oceans, economy...
-                      Let's check out if you really know the world where you're living with this <strong>general knowledge questions</strong> geography quizz !
+                      Numbers of <strong>cinema trivia questions</strong> with answers to become better 
+                      at quizzes games. A wide diversity of topics are waiting for you: 
+                      actors, movies, directors, people... Simply answer every question as carefully as you can. 
+                      Are you a quizmaster? Let's find out!
                     </Typography>
                     <RadioQuiz result={questions.results.slice(0, 10)}/>
                   </CardContent>
@@ -97,18 +89,19 @@ function Geography({ questions }) {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image='geography.jpg'
-                  title='general knowledge questions geography'
+                  image='general_knowledge_questions_with_answers_cinema1.jpg'
+                  title='Cinema'
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    General knowledge questions : geography quiz #2
+                    General trivia questions with answers : cinema quizz #2
                   </Typography>
                   <Typography paragraph>
-                    Another serie of <strong>general knowledge questions</strong> to help you prepare an exam, 
-                    or just to play with friends.
-                    Will you be able to pick up the challenge ?
-                    New questions every time in this <strong>general knowledge questions geography quiz</strong> !
+                    So you want more questions? This is Another batch of <strong>quiz questions</strong> 
+                    to help you prepare an exam, or just to play with friends. 
+                    All you have to do is staying focused (and please, don't cheat!). 
+                    Discover your score at the end of the quiz. 
+                    New questions every time in this world cinema quiz!
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(11, 21)}/>
@@ -117,22 +110,24 @@ function Geography({ questions }) {
               </Card>
             </Grid>
           </Grid>
+
           <Grid container spacing={4}>
             <Grid item xs={12} sm={12} md={12}>
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image='geography.jpg'
-                  title='general knowledge questions'
+                  image='general_knowledge_questions_with_answers_cinema2.jpg'
+                  title='Cinema'
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    General knowledge questions : geography quiz #3
+                    General trivia questions with answers : cinema quizz #3
                   </Typography>
                   <Typography paragraph>
-                    Our last serie of <strong>general knowledge questions</strong>.
-                    You know the rule : try to find the right answer, and do not cheat !
-                    Train harder to shine in society, brighter than ever.
+                    This is our last batch of 10 <strong>general trivia questions with answers</strong> 
+                    about cinema. This questioning is not only a test of your cinema general knowledge 
+                    but also a fun way to discover some stuff you don't know yet! 
+                    Just answer each question and try to reach the highest score.
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(22, 32)}/>
@@ -149,12 +144,10 @@ function Geography({ questions }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('https://opentdb.com/api.php?amount=50&category=22')
+  const res = await fetch('https://opentdb.com/api.php?amount=50&category=11')
   const questionsFromApi = await res.json();
   const searchRegExp = /incorrect_answers/g;
   const searchRegExp2 = /correct_answer/g;
-  // const res2 = await fetch('https://trivia.willfry.co.uk/api/questions?categories=geography&limit=1')
-  // const questionsFromApi2 = await res2.json();
 
   let questions = JSON.stringify(questionsFromApi)
     .replace(searchRegExp, "incorrectAnswers")
@@ -170,4 +163,4 @@ export async function getStaticProps() {
   }
 }
 
-export default Geography
+export default Cinema

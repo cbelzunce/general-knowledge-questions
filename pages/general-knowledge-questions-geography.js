@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Nature({ questions }) {
+function Geography({ questions }) {
   const classes = useStyles();
 
   questions.results.map((question, index) => {
@@ -41,6 +41,7 @@ function Nature({ questions }) {
 
     // convert html entities
     question.question = he.decode(question.question)
+    question.correctAnswer = he.decode(question.correctAnswer)
 
     // Mix all answers
     question.answers = []
@@ -54,6 +55,15 @@ function Nature({ questions }) {
       .map((a) => a[1])
   })
 
+  //todo define styles et design
+  // trouver images libres de droit
+  // Faire 10 séries de 10 questions avec petit paragraphe SEO
+  // Export PDF
+  // todo mélanger questions (éviter duplicate)
+
+  // todo récupérer les questions (autre source : https://trivia.willfry.co.uk/example)
+  // Formatter les questions des différentes sources pour format commun
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -65,17 +75,17 @@ function Nature({ questions }) {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image='nature.jpg'
-                    title='Nature'
+                    image='general_knowledge_questions_geo5.jpg'
+                    title='general knowledge question geography'
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h1">
-                      Gk questions : animals quiz #1
+                      General knowledge questions : geography quiz #1
                     </Typography>
                     <Typography paragraph>
-                      This is our first quiz of <strong>gk questions</strong> about animals to help you improve your general knowledge skills. 
-                      A wide variety of topics are explored : ethology, anatomy, species, alimentation, prehistoric animals... you name it !
-                      Find out just how smart -or ignorant- you are about animals with this quiz !
+                      Hundreds of <strong>general knowledge questions</strong> about geography to help you improve your gk skills. A
+                      large variety of themes are explored : countries, capital cities, people, oceans, economy...
+                      Let's check out if you really know the world where you're living with this <strong>general knowledge questions</strong> geography quizz !
                     </Typography>
                     <RadioQuiz result={questions.results.slice(0, 10)}/>
                   </CardContent>
@@ -87,18 +97,18 @@ function Nature({ questions }) {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image='nature.jpg'
-                  title='Nature'
+                  image='general_knowledge_questions_geo1.jpg'
+                  title='general knowledge questions geography'
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Gk questions : animals quiz #2
+                    General knowledge questions : geography quiz #2
                   </Typography>
                   <Typography paragraph>
-                    Second series of <strong>gk questions</strong> to help you prepare an assessment, 
+                    Another serie of <strong>general knowledge questions</strong> to help you prepare an exam, 
                     or just to play with friends.
-                    Just stay focused and try to figure out which answer is correct.
-                    New questions every time you come back on this page in this quiz about animals!
+                    Will you be able to pick up the challenge ?
+                    New questions every time in this <strong>general knowledge questions geography quiz</strong> !
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(11, 21)}/>
@@ -107,23 +117,22 @@ function Nature({ questions }) {
               </Card>
             </Grid>
           </Grid>
-
           <Grid container spacing={4}>
             <Grid item xs={12} sm={12} md={12}>
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image='nature.jpg'
-                  title='Nature'
+                  image='general_knowledge_questions_geo2.jpg'
+                  title='general knowledge questions'
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Gk questions : animals quiz #3
+                    General knowledge questions : geography quiz #3
                   </Typography>
                   <Typography paragraph>
-                    The last <strong>gk questions</strong> series about animals. 
-                    You know the rule: several answers are proposed, but only one is correct.
-                    Try to score as much as you can in this 10 questions series.
+                    Our last serie of <strong>general knowledge questions</strong>.
+                    You know the rule : try to find the right answer, and do not cheat !
+                    Train harder to shine in society, brighter than ever.
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(22, 32)}/>
@@ -140,10 +149,12 @@ function Nature({ questions }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('https://opentdb.com/api.php?amount=50&category=27')
+  const res = await fetch('https://opentdb.com/api.php?amount=50&category=22')
   const questionsFromApi = await res.json();
   const searchRegExp = /incorrect_answers/g;
   const searchRegExp2 = /correct_answer/g;
+  // const res2 = await fetch('https://trivia.willfry.co.uk/api/questions?categories=geography&limit=1')
+  // const questionsFromApi2 = await res2.json();
 
   let questions = JSON.stringify(questionsFromApi)
     .replace(searchRegExp, "incorrectAnswers")
@@ -159,4 +170,4 @@ export async function getStaticProps() {
   }
 }
 
-export default Nature
+export default Geography

@@ -40,12 +40,12 @@ const useStyles = makeStyles((theme) => ({
 // http://geekhmer.github.io/blog/2018/03/29/import-markdown-files-and-serve-its-content-in-next-dot-js/
 
 const cards = [
-  {id: 1, page:"/history", title: "History", keyword:"General trivia questions and answers", image:"history.jpg", presentation: parse("<strong>General knowledge quizz</strong> about world history, civilisations, characters...")},
-  {id: 2, page:"/geography", title: "Geography", keyword:"General knowledge questions", image:"geography.jpg", presentation: parse("<strong>General knowledge quizzes</strong> about countries and cities all around the world.")},
-  {id: 3, page:"/science", title: "Science", keyword:"General knowledge test", image:"science.jpg", presentation: parse("<strong>General knowledge quizzes</strong> about famous scientists, inventions, etc.")},
-  {id: 4, page:"/nature", title: "Animals", keyword:"GK questions", image:"nature.jpg", presentation: parse("<strong>General knowledge quizz</strong> about animals")},
-  {id: 5, page:"/arts", title: "Arts", keyword:"GK quizz", image:"arts.jpg", presentation: parse("<strong>General knowledge quizz</strong> about music, painting, theatre, literature...")},
-  {id: 6, page:"/cinema", title: "Cinema", keyword:"General knowledge questions with answers", image:"cinema.jpeg", presentation: parse("<strong>General knowledge quizzes</strong> about movies, films, actors, etc.")},
+  {id: 1, page:"/general-trivia-questions-and-answers-history", title: "History", keyword:"General trivia questions and answers", image:"general_trivia_questions_and_answers_history2.jpg", presentation: parse("<strong>General knowledge quizz</strong> about world history, civilisations, characters...")},
+  {id: 2, page:"/general-knowledge-questions-geography", title: "Geography", keyword:"General knowledge questions", image:"general_knowledge_questions_geo5.jpg", presentation: parse("<strong>General knowledge quizzes</strong> about countries and cities all around the world.")},
+  {id: 3, page:"/general-knowledge-test-science", title: "Science", keyword:"General knowledge test", image:"general_knowledge_test_science5.jpg", presentation: parse("<strong>General knowledge quizzes</strong> about famous scientists, inventions, etc.")},
+  {id: 4, page:"/gk-questions-animals", title: "Animals", keyword:"GK questions", image:"gk_questions_animals2.jpg", presentation: parse("<strong>General knowledge quizz</strong> about animals")},
+  {id: 5, page:"/gk-quiz-arts", title: "Arts", keyword:"GK quizz", image:"gk_quiz_arts2.jpg", presentation: parse("<strong>General knowledge quizz</strong> about music, painting, theatre, literature...")},
+  {id: 6, page:"/general-knowledge-questions-with-answers-cinema", title: "Cinema", keyword:"General knowledge questions with answers", image:"general_knowledge_questions_with_answers_cinema3.jpg", presentation: parse("<strong>General knowledge quizzes</strong> about movies, films, actors, etc.")},
 ];
 
 export default function Home() {

@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function History({ questions }) {
+function Nature({ questions }) {
   const classes = useStyles();
 
   questions.results.map((question, index) => {
@@ -41,7 +41,6 @@ function History({ questions }) {
 
     // convert html entities
     question.question = he.decode(question.question)
-    question.correctAnswer = he.decode(question.correctAnswer)
 
     // Mix all answers
     question.answers = []
@@ -66,17 +65,17 @@ function History({ questions }) {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image='history.jpg'
-                    title='History'
+                    image='gk_questions_animals2.jpg'
+                    title='Nature'
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h1">
-                      General trivia questions and answers : history quizz #1
+                      Gk questions : animals quiz #1
                     </Typography>
                     <Typography paragraph>
-                      Hundreds of <strong>general trivia questions and answers</strong> about history, to help you improve your general knowledge skills.
-                      Answer our multiple-choice quiz questions as accurately as possible.
-                      find out how much you know about history with this <strong>quiz</strong> !
+                      This is our first quiz of <strong>gk questions</strong> about animals to help you improve your general knowledge skills. 
+                      A wide variety of topics are explored : ethology, anatomy, species, alimentation, prehistoric animals... you name it !
+                      Find out just how smart -or ignorant- you are about animals with this quiz !
                     </Typography>
                     <RadioQuiz result={questions.results.slice(0, 10)}/>
                   </CardContent>
@@ -88,18 +87,18 @@ function History({ questions }) {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image='history.jpg'
-                  title='History'
+                  image='gk_questions_animals1.jpg'
+                  title='Nature'
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    General trivia questions and answers : history quizz #2
+                    Gk questions : animals quiz #2
                   </Typography>
                   <Typography paragraph>
-                    Another serie of <strong>gk trivia questions</strong> to help you prepare an exam, 
-                    or just for fun.
-                    Read each question carefully and choose the response that you think is correct.
-                    Find out just how smart -or ignorant- you are with this history quiz !
+                    Second series of <strong>gk questions</strong> to help you prepare an assessment, 
+                    or just to play with friends.
+                    Just stay focused and try to figure out which answer is correct.
+                    New questions every time you come back on this page in this quiz about animals!
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(11, 21)}/>
@@ -114,17 +113,17 @@ function History({ questions }) {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image='history.jpg'
-                  title='History'
+                  image='gk_questions_animals4.jpg'
+                  title='Nature'
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    General trivia questions and answers : history quizz #3
+                    Gk questions : animals quiz #3
                   </Typography>
                   <Typography paragraph>
-                    Our last <strong>general trivia questions and answers</strong> about history.
-                    Simply answer history questions and score as much as you can.
-                    This quiz is not only a test of your history gk, but also a funny way to learn a few things you do not know yet !
+                    The last <strong>gk questions</strong> series about animals. 
+                    You know the rule: several answers are proposed, but only one is correct.
+                    Try to score as much as you can in this 10 questions series.
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(22, 32)}/>
@@ -141,7 +140,7 @@ function History({ questions }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('https://opentdb.com/api.php?amount=50&category=23')
+  const res = await fetch('https://opentdb.com/api.php?amount=50&category=27')
   const questionsFromApi = await res.json();
   const searchRegExp = /incorrect_answers/g;
   const searchRegExp2 = /correct_answer/g;
@@ -160,4 +159,4 @@ export async function getStaticProps() {
   }
 }
 
-export default History
+export default Nature

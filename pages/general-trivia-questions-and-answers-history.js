@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Science({ questions }) {
+function History({ questions }) {
   const classes = useStyles();
 
   questions.results.map((question, index) => {
@@ -41,6 +41,7 @@ function Science({ questions }) {
 
     // convert html entities
     question.question = he.decode(question.question)
+    question.correctAnswer = he.decode(question.correctAnswer)
 
     // Mix all answers
     question.answers = []
@@ -65,18 +66,17 @@ function Science({ questions }) {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image='science.jpg'
-                    title='Science'
+                    image='general_trivia_questions_and_answers_history2.jpg'
+                    title='History'
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h1">
-                      General knowledge test : science #1
+                      General trivia questions and answers : history quizz #1
                     </Typography>
                     <Typography paragraph>
-                      This is our first <strong>General knowledge test</strong> about science.
-                      Human body, chemsitry, physics, astronomy, scientists... are some of the themes of the following quiz.
-                      The rule is easy: simply try to figure which answer is the good one.
-                      Ready? Let's go!
+                      Hundreds of <strong>general trivia questions and answers</strong> about history, to help you improve your general knowledge skills.
+                      Answer our multiple-choice quiz questions as accurately as possible.
+                      find out how much you know about history with this <strong>quiz</strong> !
                     </Typography>
                     <RadioQuiz result={questions.results.slice(0, 10)}/>
                   </CardContent>
@@ -88,18 +88,18 @@ function Science({ questions }) {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image='science.jpg'
-                  title='Science'
+                  image='general_trivia_questions_and_answers_history1.jpg'
+                  title='History'
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    General knowledge test : science #2
+                    General trivia questions and answers : history quizz #2
                   </Typography>
                   <Typography paragraph>
-                    So you want to play again ? This is another batch of <strong>gk questions</strong> to test your knowledge and memory.
-                    Our quizzes can help you prepare an exam or a test. Or maybe you just do it for fun !
-                    All you have to do is staying focused. Discover your score at the end of the quiz. 
-                    New questions every time in this science quiz!
+                    Another serie of <strong>gk trivia questions</strong> to help you prepare an exam, 
+                    or just for fun.
+                    Read each question carefully and choose the response that you think is correct.
+                    Find out just how smart -or ignorant- you are with this history quiz !
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(11, 21)}/>
@@ -114,18 +114,17 @@ function Science({ questions }) {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image='science.jpg'
-                  title='Science'
+                  image='general_trivia_questions_and_answers_history4.jpg'
+                  title='History'
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    General knowledge test : science #3
+                    General trivia questions and answers : history quizz #3
                   </Typography>
                   <Typography paragraph>
-                    Our last <strong>general knowledge test</strong> about science.
-                    Simply answer science questions and score as much as you can.
-                    This quiz is not only a test of your science general knowledge, 
-                    but also a fun way to learn new things !
+                    Our last <strong>general trivia questions and answers</strong> about history.
+                    Simply answer history questions and score as much as you can.
+                    This quiz is not only a test of your history gk, but also a funny way to learn a few things you do not know yet !
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(22, 32)}/>
@@ -142,7 +141,7 @@ function Science({ questions }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('https://opentdb.com/api.php?amount=50&category=17')
+  const res = await fetch('https://opentdb.com/api.php?amount=50&category=23')
   const questionsFromApi = await res.json();
   const searchRegExp = /incorrect_answers/g;
   const searchRegExp2 = /correct_answer/g;
@@ -161,4 +160,4 @@ export async function getStaticProps() {
   }
 }
 
-export default Science
+export default History

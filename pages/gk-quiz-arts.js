@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Cinema({ questions }) {
+function Arts({ questions }) {
   const classes = useStyles();
 
   questions.results.map((question, index) => {
@@ -66,18 +66,18 @@ function Cinema({ questions }) {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image='cinema.jpeg'
-                    title='Cinema'
+                    image='gk_quiz_arts2.jpg'
+                    title='Arts'
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h1">
-                      General trivia questions with answers : cinema quizz #1
+                      Gk quiz : arts #1
                     </Typography>
                     <Typography paragraph>
-                      Numbers of <strong>cinema trivia questions</strong> with answers to become better 
-                      at quizzes games. A wide diversity of topics are waiting for you: 
-                      actors, movies, directors, people... Simply answer every question as carefully as you can. 
-                      Are you a quizmaster? Let's find out!
+                      This is our first <strong>gk quiz</strong> about arts to help you becoming better at quizzes.
+                      Painters, sculptors, artistic movements, fun facts about pantings, are some of the topics of the following questions.
+                      The rule is simple: just try to figure which answer is the correct one among the list.
+                      Ready? Go!
                     </Typography>
                     <RadioQuiz result={questions.results.slice(0, 10)}/>
                   </CardContent>
@@ -89,19 +89,18 @@ function Cinema({ questions }) {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image='cinema.jpeg'
-                  title='Cinema'
+                  image='gk_quiz_arts1.jpg'
+                  title='Arts'
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    General trivia questions with answers : cinema quizz #2
+                    Gk quiz : arts #2
                   </Typography>
                   <Typography paragraph>
-                    So you want more questions? This is Another batch of <strong>quiz questions</strong> 
-                    to help you prepare an exam, or just to play with friends. 
-                    All you have to do is staying focused (and please, don't cheat!). 
-                    Discover your score at the end of the quiz. 
-                    New questions every time in this world cinema quiz!
+                    One more batch of 10 <strong>quiz questions</strong> to help you practise an assessment, 
+                    or just for pleasure.
+                    The questions change each time you come back to this page.
+                    Try to reach the highest score, and check it at the end of the quiz.
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(11, 21)}/>
@@ -116,18 +115,17 @@ function Cinema({ questions }) {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image='cinema.jpeg'
-                  title='Cinema'
+                  image='gk_quiz_arts3.jpg'
+                  title='Arts'
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    General trivia questions with answers : cinema quizz #3
+                    Gk quiz : arts #3
                   </Typography>
                   <Typography paragraph>
-                    This is our last batch of 10 <strong>general trivia questions with answers</strong> 
-                    about cinema. This questioning is not only a test of your cinema general knowledge 
-                    but also a fun way to discover some stuff you don't know yet! 
-                    Just answer each question and try to reach the highest score.
+                    This is the last gk quiz for the arts category.
+                    Simply try to find the correct answer, and socre as much as you can.
+                    Learning new things while having fun, isn'it wonderful?
                   </Typography>
                   <Typography>
                     <RadioQuiz result={questions.results.slice(22, 32)}/>
@@ -144,7 +142,7 @@ function Cinema({ questions }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('https://opentdb.com/api.php?amount=50&category=11')
+  const res = await fetch('https://opentdb.com/api.php?amount=25&category=25')
   const questionsFromApi = await res.json();
   const searchRegExp = /incorrect_answers/g;
   const searchRegExp2 = /correct_answer/g;
@@ -163,4 +161,4 @@ export async function getStaticProps() {
   }
 }
 
-export default Cinema
+export default Arts

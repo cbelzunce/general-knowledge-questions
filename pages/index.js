@@ -55,7 +55,10 @@ export default function Home() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Navbar/>
+      <Navbar
+        description={"General knowledge quizzes in various topics : geography quizz, history trivial, nature gk quizzes..."}
+        title={"General knowledge quizzes"}
+      />
       <main>
         <HeroContent/>
         <Container className={classes.cardGrid} maxWidth="md">

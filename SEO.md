@@ -1,5 +1,13 @@
 ## SEO Optimization
 
+Todo :
+
+- Finir description dans nav + autres balises meta sur chaque page
+- Balises descriptions doivent faire 160 caractères (call to action, etc.)
+- Mettre Google Analytics
+- Ajouts balises meta réseaux sociaux
+- Suivre préconisations (check mails)
+
 HomePage : General knowledge quizzes
 
 - Recherches associées (doit figurer dans la page. A intégrer dans les vignettes) :
@@ -53,6 +61,3 @@ Don't worry if you fail, you can replay the quiz if you want.
 Discover your score at the end of the quiz.
 
 https://www.edudose.com/gk/
-
-Todo FINISH SEO : Arts, et faire Science et Animale
-Todo bug : si réponse a des accents non décodés, pas possible d'avoir juste

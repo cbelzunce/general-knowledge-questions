@@ -58,7 +58,10 @@ function Arts({ questions }) {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Navbar/>
+      <Navbar
+        description={'Gk quiz about arts and various other themes: science, animals, history, geography, cinema... Improve your gk skills with our quizzes.'}
+        title={"Gk quiz"}
+      />  
       <main>
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>

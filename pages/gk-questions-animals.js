@@ -57,7 +57,10 @@ function Nature({ questions }) {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Navbar/>
+      <Navbar
+        description={'Gk questions about animals, science, arts, cinema, geography, history... Test your gk skills with our quiz games.'}
+        title={"Gk questions"}
+      />
       <main>
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>

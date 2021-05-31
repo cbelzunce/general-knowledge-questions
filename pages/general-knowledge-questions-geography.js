@@ -55,19 +55,13 @@ function Geography({ questions }) {
       .map((a) => a[1])
   })
 
-  //todo define styles et design
-  // trouver images libres de droit
-  // Faire 10 séries de 10 questions avec petit paragraphe SEO
-  // Export PDF
-  // todo mélanger questions (éviter duplicate)
-
-  // todo récupérer les questions (autre source : https://trivia.willfry.co.uk/example)
-  // Formatter les questions des différentes sources pour format commun
-
   return (
     <React.Fragment>
       <CssBaseline />
-      <Navbar/>
+      <Navbar 
+        description={'General knowledge questions about geography, history, cinema, science, animals... improve your gk skills with hundreds of fun quizzes.'}
+        title={"General knowledge questions"}
+      />
       <main>
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>

@@ -58,7 +58,10 @@ function Cinema({ questions }) {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Navbar/>
+      <Navbar 
+        description={"General knowledge questions with answers: test your smarts with fun quizzes about cinema, history, geography... Hundreds of free online trivia quiz games to improve your gk skills."}
+        title={"General knowledge questions with answers"}
+      />
       <main>
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>

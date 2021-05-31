@@ -58,7 +58,10 @@ function History({ questions }) {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Navbar/>
+      <Navbar
+        description={'General trivia questions and answers about history, geography, cinema, science, arts... Test your general knowledge skills with our free quizzes.'}
+        title={"General trivia questions"}
+      />
       <main>
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>

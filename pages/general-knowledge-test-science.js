@@ -57,7 +57,10 @@ function Science({ questions }) {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Navbar/>
+      <Navbar 
+        description={'General knowledge test: improve your gk skills with hundreds of free quizzes about various topics (science, arts, history, animals, cinema...).'}
+        title={"General knowledge test"}
+      />
       <main>
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>

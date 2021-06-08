@@ -77,7 +77,7 @@ export default function RadioQuiz(props) {
               currentQuestion < countQuestions
                 ? props.result[currentQuestion].question
                 : <>
-                    <p>Votre Score : {score} / {countQuestions}</p>
+                    <p>Your Score : {score} / {countQuestions}</p>
                     <Button
                       variant="outlined"
                       color="primary"

@@ -1,12 +1,16 @@
+## Google Analytics
+https://mariestarck.com/add-google-analytics-to-your-next-js-application-in-5-easy-steps/
+
 ## SEO Optimization
 
 Todo :
 
-- Finir description dans nav + autres balises meta sur chaque page
-- Balises descriptions doivent faire 160 caractères (call to action, etc.)
-- Mettre Google Analytics
+- Meta réseaux sociaux et opengraph
 - Ajouts balises meta réseaux sociaux
 - Suivre préconisations (check mails)
+- Mise en ligne
+- Test du SEO avec outil de diagnostic
+- Refacto
 
 HomePage : General knowledge quizzes
 

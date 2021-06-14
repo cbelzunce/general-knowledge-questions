@@ -12,6 +12,11 @@ Todo :
 - Test du SEO avec outil de diagnostic
 - Refacto
 
+- Virer check answer : se fait automatiquement au moment de répondre.
+Obligé de répondre pour passer à la prochaine
+Mettre numéro de question
+Mieux séparer les quizzs (pas clair)
+
 HomePage : General knowledge quizzes
 
 - Recherches associées (doit figurer dans la page. A intégrer dans les vignettes) :

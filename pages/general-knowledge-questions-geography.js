@@ -11,6 +11,7 @@ import he from 'he'
 import Card from '@material-ui/core/Card/Card'
 import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
+import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -35,6 +36,12 @@ const useStyles = makeStyles((theme) => ({
 
 function Geography({ questions }) {
   const classes = useStyles();
+  const [showQuizz, setShowQuizz] = React.useState(false)
+  const [showQuizz2, setShowQuizz2] = React.useState(false)
+  const [showQuizz3, setShowQuizz3] = React.useState(false)
+  const onClick = () => setShowQuizz(true)
+  const onClick2 = () => setShowQuizz2(true)
+  const onClick3 = () => setShowQuizz3(true)
 
   questions.results.map((question, index) => {
     question.id = index;
@@ -81,7 +88,16 @@ function Geography({ questions }) {
                       large variety of themes are explored : countries, capital cities, people, oceans, economy...
                       Let's check out if you really know the world where you're living with this <strong>general knowledge questions</strong> geography quizz !
                     </Typography>
-                    <RadioQuiz result={questions.results.slice(0, 10)}/>
+
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      onClick={onClick}
+                      item
+                    >
+                      Start Quizz #1
+                    </Button>
+                      { showQuizz ? <RadioQuiz result={questions.results.slice(0, 10)}/> : null }
                   </CardContent>
                 </Card>
               </Grid>
@@ -104,9 +120,16 @@ function Geography({ questions }) {
                     Will you be able to pick up the challenge ?
                     New questions every time in this <strong>general knowledge questions geography quiz</strong> !
                   </Typography>
-                  <Typography>
-                    <RadioQuiz result={questions.results.slice(11, 21)}/>
-                  </Typography>
+
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={onClick2}
+                    item
+                  >
+                    Start Quizz #2
+                  </Button>
+                  { showQuizz2 ? <RadioQuiz result={questions.results.slice(11, 21)}/> : null }
                 </CardContent>
               </Card>
             </Grid>
@@ -128,9 +151,15 @@ function Geography({ questions }) {
                     You know the rule : try to find the right answer, and do not cheat !
                     Train harder to shine in society, brighter than ever.
                   </Typography>
-                  <Typography>
-                    <RadioQuiz result={questions.results.slice(22, 32)}/>
-                  </Typography>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={onClick3}
+                    item
+                  >
+                    Start Quizz #3
+                  </Button>
+                  { showQuizz3 ? <RadioQuiz result={questions.results.slice(22, 32)}/> : null }
                 </CardContent>
               </Card>
             </Grid>

@@ -36,10 +36,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Geography({ questions }) {
   const classes = useStyles();
-  const [showQuizz, setShowQuizz] = React.useState(false)
   const [showQuizz2, setShowQuizz2] = React.useState(false)
   const [showQuizz3, setShowQuizz3] = React.useState(false)
-  const onClick = () => setShowQuizz(true)
   const onClick2 = () => setShowQuizz2(true)
   const onClick3 = () => setShowQuizz3(true)
 
@@ -88,16 +86,7 @@ function Geography({ questions }) {
                       large variety of themes are explored : countries, capital cities, people, oceans, economy...
                       Let's check out if you really know the world where you're living with this <strong>general knowledge questions</strong> geography quizz !
                     </Typography>
-
-                    <Button
-                      variant="outlined"
-                      color="primary"
-                      onClick={onClick}
-                      item
-                    >
-                      Start Quizz #1
-                    </Button>
-                      { showQuizz ? <RadioQuiz result={questions.results.slice(0, 10)}/> : null }
+                      <RadioQuiz result={questions.results.slice(0, 10)} startButton={"Start Quizz #1"}/>
                   </CardContent>
                 </Card>
               </Grid>

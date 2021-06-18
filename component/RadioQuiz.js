@@ -11,18 +11,22 @@ import { useState } from 'react'
 export default function RadioQuiz(props) {
   const [value, setValue] = React.useState('');
   const [error, setError] = React.useState(false);
+  const [showQuizz, setShowQuizz] = React.useState(false)
   const [helperText, setHelperText] = React.useState('Choose wisely');
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [disable, setDisable] = useState(false);
   const countQuestions = props.result.length;
   const firstQuestionId = props.result[0].id;
+  const startButton = props.startButton;
 
   const handleRadioChange = (event) => {
     setValue(event.target.value);
     setHelperText(' ');
     setError(false);
   };
+
+  const onClick = () => setShowQuizz("true")
 
   const updateQuestion = () => {
 
@@ -63,65 +67,80 @@ export default function RadioQuiz(props) {
     }
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <FormControl
-        sx={{ m: 3 }}
-        component="fieldset"
-        error={error}
-        variant="standard"
+  // The Start Button
+  const button = <Button
+    variant="outlined"
+    color="primary"
+    onClick={onClick}
+    item
+  >
+    { startButton }
+  </Button>
+
+  // The Quizz
+  const quizz = <form onSubmit={handleSubmit}>
+    <FormControl
+      sx={{ m: 3 }}
+      component="fieldset"
+      error={error}
+      variant="standard"
+    >
+      <FormLabel>
+        <h3>
+          {
+            currentQuestion < countQuestions
+              ? props.result[currentQuestion].question
+              : <>
+                <p>Your Score : {score} / {countQuestions}</p>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  onClick={() => setCurrentQuestion(() => {resetQuiz()})}
+                  item
+                >
+                  Try Again
+                </Button>
+              </>
+          }
+        </h3>
+      </FormLabel>
+      <RadioGroup
+        aria-label="quiz"
+        name="quiz"
+        value={value}
+        onChange={handleRadioChange}
       >
-        <FormLabel>
-          <h3>
-            {
-              currentQuestion < countQuestions
-                ? props.result[currentQuestion].question
-                : <>
-                    <p>Your Score : {score} / {countQuestions}</p>
-                    <Button
-                      variant="outlined"
-                      color="primary"
-                      onClick={() => setCurrentQuestion(() => {resetQuiz()})}
-                      item
-                    >
-                      Try Again
-                    </Button>
-                  </>
-            }
-          </h3>
-        </FormLabel>
-        <RadioGroup
-          aria-label="quiz"
-          name="quiz"
-          value={value}
-          onChange={handleRadioChange}
-        >
         {
           props.result[currentQuestion]
             ? props.result[currentQuestion].answers.map((answer, index) => {
-          return <FormControlLabel key={index} value={answer} control={<Radio/>} label={answer}/>
-        })
+              return <FormControlLabel key={index} value={answer} control={<Radio/>} label={answer}/>
+            })
             : ''
         }
-        </RadioGroup>
-        <FormHelperText>{currentQuestion < countQuestions ? helperText : ''}</FormHelperText>
+      </RadioGroup>
+      <FormHelperText>{currentQuestion < countQuestions ? helperText : ''}</FormHelperText>
 
-        {currentQuestion < countQuestions &&
-          <>
-            <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined" disabled={disable}>
-              Check Answer
-            </Button>
-            <br/>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={() => setCurrentQuestion(() => {updateQuestion()})}
-              >
-              Next question
-            </Button>
-          </>
-        }
-      </FormControl>
-    </form>
+      {currentQuestion < countQuestions &&
+      <>
+        <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined" disabled={disable}>
+          Check Answer
+        </Button>
+        <br/>
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={() => setCurrentQuestion(() => {updateQuestion()})}
+        >
+          Next question
+        </Button>
+      </>
+      }
+    </FormControl>
+  </form>
+
+  return (
+    <>
+      {showQuizz ?  quizz : button }
+    </>
   );
 }

@@ -86,7 +86,7 @@ function Geography({ questions }) {
                       large variety of themes are explored : countries, capital cities, people, oceans, economy...
                       Let's check out if you really know the world where you're living with this <strong>general knowledge questions</strong> geography quizz !
                     </Typography>
-                      <RadioQuiz result={questions.results.slice(0, 10)} startButton={"Start Quizz #1"}/>
+                    <RadioQuiz result={questions.results.slice(0, 10)} startButton={"Start Quizz #1"}/>
                   </CardContent>
                 </Card>
               </Grid>
@@ -109,16 +109,7 @@ function Geography({ questions }) {
                     Will you be able to pick up the challenge ?
                     New questions every time in this <strong>general knowledge questions geography quiz</strong> !
                   </Typography>
-
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    onClick={onClick2}
-                    item
-                  >
-                    Start Quizz #2
-                  </Button>
-                  { showQuizz2 ? <RadioQuiz result={questions.results.slice(11, 21)}/> : null }
+                  <RadioQuiz result={questions.results.slice(11, 21)} startButton={"Start Quizz #2"}/>
                 </CardContent>
               </Card>
             </Grid>
@@ -140,15 +131,7 @@ function Geography({ questions }) {
                     You know the rule : try to find the right answer, and do not cheat !
                     Train harder to shine in society, brighter than ever.
                   </Typography>
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    onClick={onClick3}
-                    item
-                  >
-                    Start Quizz #3
-                  </Button>
-                  { showQuizz3 ? <RadioQuiz result={questions.results.slice(22, 32)}/> : null }
+                  <RadioQuiz result={questions.results.slice(22, 32)} startButton={"Start Quizz #3"}/>
                 </CardContent>
               </Card>
             </Grid>

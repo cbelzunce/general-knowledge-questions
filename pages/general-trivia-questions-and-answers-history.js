@@ -81,7 +81,7 @@ function History({ questions }) {
                       Answer our multiple-choice quiz questions as accurately as possible.
                       find out how much you know about history with this <strong>quiz</strong> !
                     </Typography>
-                    <RadioQuiz result={questions.results.slice(0, 10)}/>
+                    <RadioQuiz result={questions.results.slice(0, 10)} startButton={"Start Quizz #1"}/>
                   </CardContent>
                 </Card>
               </Grid>
@@ -104,9 +104,7 @@ function History({ questions }) {
                     Read each question carefully and choose the response that you think is correct.
                     Find out just how smart -or ignorant- you are with this history quiz !
                   </Typography>
-                  <Typography>
-                    <RadioQuiz result={questions.results.slice(11, 21)}/>
-                  </Typography>
+                  <RadioQuiz result={questions.results.slice(11, 21)} startButton={"Start Quizz #2"}/>
                 </CardContent>
               </Card>
             </Grid>
@@ -129,9 +127,7 @@ function History({ questions }) {
                     Simply answer history questions and score as much as you can.
                     This quiz is not only a test of your history gk, but also a funny way to learn a few things you do not know yet !
                   </Typography>
-                  <Typography>
-                    <RadioQuiz result={questions.results.slice(22, 32)}/>
-                  </Typography>
+                  <RadioQuiz result={questions.results.slice(22, 32)} startButton={"Start Quizz #3"}/>
                 </CardContent>
               </Card>
             </Grid>

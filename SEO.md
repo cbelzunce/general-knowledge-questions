@@ -1,3 +1,7 @@
+## Optimisations
+- Un seul quizz affiché ?
+A la fin du questionnaire, possibilité de cliquer sur Next Quizz
+
 ## Google Analytics
 https://mariestarck.com/add-google-analytics-to-your-next-js-application-in-5-easy-steps/
 

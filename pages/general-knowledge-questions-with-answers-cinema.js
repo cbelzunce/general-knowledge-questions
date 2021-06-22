@@ -82,7 +82,7 @@ function Cinema({ questions }) {
                       actors, movies, directors, people... Simply answer every question as carefully as you can. 
                       Are you a quizmaster? Let's find out!
                     </Typography>
-                    <RadioQuiz result={questions.results.slice(0, 10)}/>
+                    <RadioQuiz result={questions.results.slice(0, 10)} startButton={"Start Quizz #1"}/>
                   </CardContent>
                 </Card>
               </Grid>
@@ -106,9 +106,7 @@ function Cinema({ questions }) {
                     Discover your score at the end of the quiz. 
                     New questions every time in this world cinema quiz!
                   </Typography>
-                  <Typography>
-                    <RadioQuiz result={questions.results.slice(11, 21)}/>
-                  </Typography>
+                  <RadioQuiz result={questions.results.slice(11, 21)} startButton={"Start Quizz #2"}/>
                 </CardContent>
               </Card>
             </Grid>
@@ -132,9 +130,7 @@ function Cinema({ questions }) {
                     but also a fun way to discover some stuff you don't know yet! 
                     Just answer each question and try to reach the highest score.
                   </Typography>
-                  <Typography>
-                    <RadioQuiz result={questions.results.slice(22, 32)}/>
-                  </Typography>
+                  <RadioQuiz result={questions.results.slice(22, 32)} startButton={"Start Quizz #3"}/>
                 </CardContent>
               </Card>
             </Grid>

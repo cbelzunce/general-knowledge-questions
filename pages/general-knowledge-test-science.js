@@ -81,7 +81,7 @@ function Science({ questions }) {
                       The rule is easy: simply try to figure which answer is the good one.
                       Ready? Let's go!
                     </Typography>
-                    <RadioQuiz result={questions.results.slice(0, 10)}/>
+                    <RadioQuiz result={questions.results.slice(0, 10)} startButton={"Start Quizz #1"}/>
                   </CardContent>
                 </Card>
               </Grid>
@@ -104,9 +104,7 @@ function Science({ questions }) {
                     All you have to do is staying focused. Discover your score at the end of the quiz. 
                     New questions every time in this science quiz!
                   </Typography>
-                  <Typography>
-                    <RadioQuiz result={questions.results.slice(11, 21)}/>
-                  </Typography>
+                  <RadioQuiz result={questions.results.slice(11, 21)} startButton={"Start Quizz #2"}/>
                 </CardContent>
               </Card>
             </Grid>
@@ -130,9 +128,7 @@ function Science({ questions }) {
                     This quiz is not only a test of your science general knowledge, 
                     but also a fun way to learn new things !
                   </Typography>
-                  <Typography>
-                    <RadioQuiz result={questions.results.slice(22, 32)}/>
-                  </Typography>
+                  <RadioQuiz result={questions.results.slice(22, 32)} startButton={"Start Quizz #3"}/>
                 </CardContent>
               </Card>
             </Grid>

@@ -80,7 +80,7 @@ function Nature({ questions }) {
                       A wide variety of topics are explored : ethology, anatomy, species, alimentation, prehistoric animals... you name it !
                       Find out just how smart -or ignorant- you are about animals with this quiz !
                     </Typography>
-                    <RadioQuiz result={questions.results.slice(0, 10)}/>
+                    <RadioQuiz result={questions.results.slice(0, 10)} startButton={"Start Quizz #1"}/>
                   </CardContent>
                 </Card>
               </Grid>
@@ -103,9 +103,7 @@ function Nature({ questions }) {
                     Just stay focused and try to figure out which answer is correct.
                     New questions every time you come back on this page in this quiz about animals!
                   </Typography>
-                  <Typography>
-                    <RadioQuiz result={questions.results.slice(11, 21)}/>
-                  </Typography>
+                  <RadioQuiz result={questions.results.slice(11, 21)} startButton={"Start Quizz #2"}/>
                 </CardContent>
               </Card>
             </Grid>
@@ -128,9 +126,7 @@ function Nature({ questions }) {
                     You know the rule: several answers are proposed, but only one is correct.
                     Try to score as much as you can in this 10 questions series.
                   </Typography>
-                  <Typography>
-                    <RadioQuiz result={questions.results.slice(22, 32)}/>
-                  </Typography>
+                  <RadioQuiz result={questions.results.slice(22, 32)} startButton={"Start Quizz #3"}/>
                 </CardContent>
               </Card>
             </Grid>
